@@ -10,6 +10,7 @@ export default function Main() {
   return (
     <div className="min-h-screen flex justify-center items-center">
       <h1 className="text-3xl font-bold text-blue-600">{data}</h1>
+      <p>메인페이지 UI 작업</p>
     </div>
   );
 }
