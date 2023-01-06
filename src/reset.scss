@@ -1,4 +1,12 @@
-/* reset.css */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+  v2.0 | 20110126
+  License: none (public domain)
+*/
+@import "./media.scss";
+
+* {
+  box-sizing: border-box;
+}
 html,
 body,
 div,
@@ -83,10 +91,8 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -124,6 +130,19 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+html {
+  font-size: 62.5%;
+  @include tablet {
+    font-size: 84.5%;
+  }
+  @include laptop {
+    font-size: 100%;
+  }
+  @include desktop {
+    font-size: 150%;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
