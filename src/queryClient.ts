@@ -45,7 +45,6 @@ export const restFetcher = async ({
       method,
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": BASE_URL,
       },
     };
     if (body) axiosConfig.data = body;

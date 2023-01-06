@@ -12,9 +12,6 @@ export default function Main() {
       <h1 className="text-3xl font-bold text-blue-600">
         {JSON.stringify(product)}
       </h1>
-      <h1 className="text-3xl font-bold text-blue-600">
-        {JSON.stringify(product)}
-      </h1>
     </div>
   );
 }
