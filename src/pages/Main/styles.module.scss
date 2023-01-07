@@ -1,9 +1,13 @@
-.container {
-  width: 10rem;
-  height: 10rem;
-  background-color: red;
+.conatiner {
+  overflow-x: hidden;
 }
-.text {
-  color: blue;
-  font-size: 2rem;
+.button {
+  color: var(--button-color);
+}
+.backgroundImg {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  min-width: 1200px;
+  height: 300px;
 }
