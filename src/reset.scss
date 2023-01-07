@@ -4,9 +4,13 @@
 */
 @import "./media.scss";
 
-* {
-  box-sizing: border-box;
+:root {
+  --background-color: #a8b0d7;
+  --poision-color: #373261;
+  --safe-color: #5d7151;
+  --button-color: #9675f5;
 }
+
 html,
 body,
 div,
@@ -110,6 +114,8 @@ section {
 }
 body {
   line-height: 1;
+  font-family: "Yeon Sung", cursive;
+  // font-family: "Sunshiney", cursive;
 }
 ol,
 ul {
@@ -130,16 +136,16 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+* {
+  box-sizing: border-box;
+}
 html {
-  font-size: 62.5%;
+  font-size: 62.5%; // 1rem = 10px;
   @include tablet {
-    font-size: 84.5%;
-  }
-  @include laptop {
-    font-size: 100%;
+    font-size: 87.5%; // 1rem = 14px;
   }
   @include desktop {
-    font-size: 150%;
+    font-size: 100%; // 1rem = 16px;
   }
 }
 

@@ -1,20 +1,18 @@
-import { QueryKeys, restFetcher } from "@/queryClient";
-import { Test } from "@/types/test";
-import { useQuery } from "@tanstack/react-query";
-import React from "react";
 import styles from "./styles.module.scss";
+import main_background from "@/assets/main_background.png";
+import logo from "@/assets/logo.svg";
 
-export default function Main() {
-  const { data: product } = useQuery<Test[]>([QueryKeys.TEST], () =>
-    restFetcher({ method: "GET", path: "/product" }),
-  );
+export default function MainPage() {
+  // React Query 사용 예시
+  // const { data: product } = useQuery<Test[]>([QueryKeys.TEST], () =>
+  //   restFetcher({ method: "GET", path: "/product" }),
+  // );
+
   return (
-    <div
-      className={`min-h-screen flex justify-center items-center ${styles.container}`}
-    >
-      <h1 className="text-3xl font-bold text-blue-600">
-        {JSON.stringify(product)}
-      </h1>
+    <div className={styles.container}>
+      <p className={styles.button}>main</p>
+      <img className={styles.backgroundImg} src={main_background} />
+      <img src={logo} />
     </div>
   );
 }
