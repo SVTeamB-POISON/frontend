@@ -3,10 +3,11 @@ import styles from "./styles.module.scss";
 
 type DonutChartProps = {
   percent: number;
+  poision: boolean;
 };
 
-export default function DonutChart({ percent }: DonutChartProps) {
-  const color = "#ED8090";
+export default function DonutChart({ percent, poision }: DonutChartProps) {
+  const color = poision ? "#ED8090" : "#8DC36C";
   return (
     <div className={styles.chart}>
       <svg className={styles.aniSvg} viewBox="0 0 200 200">

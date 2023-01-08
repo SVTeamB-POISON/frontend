@@ -7,9 +7,5 @@ export default function MainPage() {
   //   restFetcher({ method: "GET", path: "/product" }),
   // );
 
-  return (
-    <div className={styles.container}>
-      <ResultCard />
-    </div>
-  );
+  return <div className={styles.container}></div>;
 }
