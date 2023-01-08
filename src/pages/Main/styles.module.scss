@@ -1,5 +1,9 @@
-.conatiner {
+.container {
+  width: 100vw;
+  height: 100vh;
   overflow-x: hidden;
+  padding-left: 5rem;
+  padding-top: 10rem;
 }
 .button {
   color: var(--button-color);
