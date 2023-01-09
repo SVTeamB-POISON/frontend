@@ -1,6 +1,5 @@
 FROM node:16-alpine
-RUN mkdir /app
-WORKDIR /app
+WORKDIR /frontend
 COPY . ./
 RUN yarn
 CMD ["yarn", "dev"]
