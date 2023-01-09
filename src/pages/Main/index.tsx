@@ -1,6 +1,5 @@
 import styles from "./styles.module.scss";
-import main_background from "@/assets/main_background.png";
-import logo from "@/assets/logo.svg";
+import ResultCard from "@/components/ResultCard";
 
 export default function MainPage() {
   // React Query 사용 예시
@@ -8,11 +7,5 @@ export default function MainPage() {
   //   restFetcher({ method: "GET", path: "/product" }),
   // );
 
-  return (
-    <div className={styles.container}>
-      <p className={styles.button}>main</p>
-      <img className={styles.backgroundImg} src={main_background} />
-      <img src={logo} />
-    </div>
-  );
+  return <div className={styles.container}></div>;
 }

@@ -1,8 +1,6 @@
 FROM node:16-alpine
-RUN mkdir /app
-WORKDIR /app
+WORKDIR /frontend
 COPY ./package.json ./
 RUN yarn
-RUN yarn global add serve
 COPY . ./
 RUN yarn build

@@ -25,8 +25,9 @@ export const getClient = (() => {
   };
 })();
 
-const { VITE_BASE_URL } = import.meta.env;
-const BASE_URL = VITE_BASE_URL || "http://localhost:8000/api";
+// const { VITE_BASE_URL } = import.meta.env;
+
+const BASE_URL = import.meta.env.DEV ? "" : "http://localhost:8000/api";
 
 export const restFetcher = async ({
   method,
@@ -59,4 +60,4 @@ export const restFetcher = async ({
   }
 };
 
-export const QueryKeys = { TEST: "TEST" };
+export const QueryKeys = { TEST: "TEST", RESULT: "RESULT" };
