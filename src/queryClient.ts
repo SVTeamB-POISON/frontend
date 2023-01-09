@@ -28,6 +28,8 @@ export const getClient = (() => {
 //const { VITE_BASE_URL } = import.meta.env;
 const BASE_URL = import.meta.env.DEV ? "" : "http://localhost:8000/api";
 
+const BASE_URL = import.meta.env.DEV ? "" : "http://localhost:8000/api";
+
 export const restFetcher = async ({
   method,
   path,
@@ -59,4 +61,4 @@ export const restFetcher = async ({
   }
 };
 
-export const QueryKeys = { TEST: "TEST", ENCY: "ENCY" };
+export const QueryKeys = { TEST: "TEST", ENCY: "ENCY", RESULT: "RESULT" };
