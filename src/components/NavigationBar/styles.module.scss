@@ -1,0 +1,28 @@
+.navContainer {
+}
+
+.searchbar {
+}
+.logoImg {
+  width: 6rem;
+  height: 6rem;
+}
+
+.logoName {
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-family: "Sunshiney", cursive;
+}
+
+.searchContainer {
+  margin-top: 3rem;
+  margin-left: 10rem;
+  width: 20rem;
+  height: 2rem;
+  &:hover {
+    border-color: red;
+  }
+}
+
+.searchInput {
+}
