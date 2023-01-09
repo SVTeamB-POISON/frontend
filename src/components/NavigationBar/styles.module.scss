@@ -4,8 +4,10 @@
 .searchbar {
 }
 .logoImg {
-  width: 6rem;
-  height: 6rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 .logoName {
@@ -15,8 +17,8 @@
 }
 
 .searchContainer {
-  margin-top: 3rem;
-  margin-left: 10rem;
+  margin-top: 2rem;
+  margin-left: 20rem;
   width: 20rem;
   height: 2rem;
   &:hover {
@@ -25,4 +27,31 @@
 }
 
 .searchInput {
+  width: 13rem;
+  height: 3rem;
+  border-width: 1px;
+  border-radius: 5px;
+
+  padding: 5px;
+  background-color: white;
+  :hover {
+    border-color: blueviolet;
+  }
+}
+
+.searchbtn {
+  width: 3rem;
+  height: 3rem;
+  border-width: 1px;
+  padding: 5px;
+  border-radius: 5px;
+  border-color: black;
+  background-image: url("/Users/robin/Desktop/Silicon/frontend/src/assets/search.svg");
+}
+
+.navline {
+  width: 46rem;
+  height: 4px;
+  margin-left: 2rem;
+  border-radius: 10px;
 }

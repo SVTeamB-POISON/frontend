@@ -1,0 +1,27 @@
+.FlowerContainer {
+  width: 15rem;
+  height: 10rem;
+}
+.imgContainer {
+  width: 18rem;
+  height: 10rem;
+  border-radius: 5px;
+  background-size: cover;
+}
+.poisonLogo {
+  position: relative;
+  width: 5rem;
+  height: 5rem;
+  z-index: 1;
+  top: -2rem;
+  left: 15rem;
+}
+
+.nameContainer {
+  position: absolute;
+  margin-top: 50px;
+  width: 18rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding-left: 10px;
+  border-radius: 5px;
+}
