@@ -19,11 +19,6 @@ export default function MainPage() {
 
   return (
     <>
-      <ul className={`gird ${styles.container}`}>
-        {data?.map((result, idx) => (
-          <FlowerList key={idx} list={result}></FlowerList>
-        ))}
-      </ul>
       <img className={styles.backgroundImg} src={main_background} />
     </>
   );

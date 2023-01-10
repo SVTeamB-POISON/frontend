@@ -1,5 +1,29 @@
 import React from "react";
+import styles from "./styles.module.scss";
+import { QueryKeys, restFetcher } from "@/queryClient";
+import { EncyData } from "@/types/ency";
+import { useQuery } from "@tanstack/react-query";
+import FlowerList from "@/components/FlowerList";
+import NavigationBar from "@/components/NavigationBar";
 
 export default function EncyclopediaPage() {
-  return <div>Encyclopedia</div>;
+  const { data } = useQuery<EncyData[]>([QueryKeys.ENCY], () =>
+    restFetcher({ method: "GET", path: "/flowers" }),
+  );
+  return (
+    <div className={`flex flex-col ${styles.container}`}>
+      <NavigationBar></NavigationBar>
+      <div>
+        <h1>도감</h1>
+        <p>식물에 대해 찾아보세요!</p>
+      </div>
+      <div>
+        <ul>
+          {data?.map((result, idx) => (
+            <FlowerList key={idx} list={result}></FlowerList>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
 }
