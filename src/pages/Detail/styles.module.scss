@@ -1,0 +1,12 @@
+@import "@/media.scss";
+
+.container {
+  display: flex;
+  place-items: center;
+  margin-top: 5rem;
+  margin-left: 5rem;
+  @include tablet {
+  }
+  @include desktop {
+  }
+}

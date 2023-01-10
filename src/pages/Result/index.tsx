@@ -9,6 +9,7 @@ export default function ResultPage() {
   const { data } = useQuery<ResultData[]>([QueryKeys.RESULT], () =>
     restFetcher({ method: "GET", path: "/result" }),
   );
+  // console.log({ data });
   return (
     <ul className={styles.container}>
       {data?.map((result, idx) => (

@@ -26,7 +26,7 @@ export const getClient = (() => {
 })();
 
 // const { VITE_BASE_URL } = import.meta.env;
-
+// import.meta.env: Vite가 환경변수를 저장하는 곳
 const BASE_URL = import.meta.env.DEV ? "" : "http://localhost:8000/api";
 
 export const restFetcher = async ({
