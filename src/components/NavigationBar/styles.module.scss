@@ -1,57 +1,73 @@
-.navContainer {
+.container {
+  width: 100%;
+  height: 120px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 10px;
+  gap: 5px;
 }
 
-.searchbar {
+.searchSection {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
 }
+
 .logoImg {
-  margin-top: 1rem;
-  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
   width: 5rem;
   height: 5rem;
 }
 
 .logoName {
-  margin-top: 2rem;
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
   font-family: "Sunshiney", cursive;
 }
 
 .searchContainer {
-  margin-top: 2rem;
-  margin-left: 20rem;
-  width: 20rem;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  width: 15rem;
   height: 2rem;
-  &:hover {
-    border-color: red;
-  }
 }
 
 .searchInput {
   width: 13rem;
   height: 3rem;
   border-width: 1px;
-  border-radius: 5px;
-
-  padding: 5px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   background-color: white;
-  :hover {
+  &:focus {
     border-color: blueviolet;
+  }
+  &:focus::placeholder {
+    color: transparent;
   }
 }
 
 .searchbtn {
+  margin: -10px;
   width: 3rem;
   height: 3rem;
   border-width: 1px;
   padding: 5px;
-  border-radius: 5px;
+  background-color: white;
+  border-radius: 0 5px 5px 0;
   border-color: black;
-  background-image: url("/Users/robin/Desktop/Silicon/frontend/src/assets/search.svg");
+  z-index: 10;
 }
 
 .navline {
-  width: 46rem;
-  height: 4px;
-  margin-left: 2rem;
+  width: 100%;
+  height: 5px;
   border-radius: 10px;
 }
