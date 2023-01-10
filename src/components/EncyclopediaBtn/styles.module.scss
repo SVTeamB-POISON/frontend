@@ -1,3 +1,8 @@
+.container {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
 .encybtn {
   margin: 10px;
   width: 10rem;
@@ -7,4 +12,8 @@
   color: white;
   border-radius: 10px;
   background-color: var(--button-color);
+  &:hover {
+    color: var(--button-color);
+    background-color: white;
+  }
 }
