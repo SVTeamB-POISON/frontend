@@ -1,6 +1,6 @@
 .container {
   overflow-x: hidden;
-  padding-left: 1rem;
+  transform: translateX(-5%);
 }
 
 .logo {
@@ -8,6 +8,7 @@
   height: 10rem;
 }
 .textContainer {
+  align-items: center;
   margin-left: 1rem;
 }
 .name {

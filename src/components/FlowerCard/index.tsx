@@ -2,11 +2,11 @@ import { EncyData } from "@/types/ency";
 import styles from "./styles.module.scss";
 import logo from "@/assets/logo.svg";
 
-type FlowerListProps = {
+type FlowerCardProps = {
   list: EncyData;
 };
 
-export default function FlowerList({ list }: FlowerListProps) {
+export default function FlowerCard({ list }: FlowerCardProps) {
   return (
     <div
       className={styles.flowerContainer}

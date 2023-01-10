@@ -1,57 +1,91 @@
-.navContainer {
+.container {
+  width: 100%;
+  height: 85px;
+  align-items: center;
+  border-radius: 10px;
 }
 
-.searchbar {
+.searchSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90vw;
+  max-width: 1200px;
 }
+
 .logoImg {
-  margin-top: 1rem;
-  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
   width: 5rem;
   height: 5rem;
 }
 
 .logoName {
-  margin-top: 2rem;
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
   font-family: "Sunshiney", cursive;
 }
 
 .searchContainer {
-  margin-top: 2rem;
-  margin-left: 20rem;
-  width: 20rem;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  width: 15rem;
   height: 2rem;
-  &:hover {
-    border-color: red;
-  }
 }
 
 .searchInput {
   width: 13rem;
   height: 3rem;
-  border-width: 1px;
-  border-radius: 5px;
-
-  padding: 5px;
+  border-width: 2px;
+  border-radius: 10px;
+  outline: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-color: #b7b7b7;
   background-color: white;
-  :hover {
-    border-color: blueviolet;
+  &:focus {
+    border-color: var(--purple-color);
+  }
+  &:focus::placeholder {
+    color: transparent;
   }
 }
 
 .searchbtn {
+  margin: -10px;
   width: 3rem;
   height: 3rem;
-  border-width: 1px;
+  border-width: 2px;
   padding: 5px;
-  border-radius: 5px;
-  border-color: black;
-  background-image: url("/Users/robin/Desktop/Silicon/frontend/src/assets/search.svg");
+  background-color: white;
+  border-radius: 0 10px 10px 0;
+  border-color: #b7b7b7;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  &:hover .searchIcon {
+    filter: invert(13%) sepia(42%) saturate(5458%) hue-rotate(275deg)
+      brightness(50%) contrast(109%);
+  }
+  &:hover {
+    border-color: var(--purple-color);
+  }
 }
 
 .navline {
-  width: 46rem;
-  height: 4px;
-  margin-left: 2rem;
+  width: 90vw;
+  height: 5px;
+  background-color: white;
   border-radius: 10px;
+  max-width: 1200px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.searchIcon {
+  width: 1.5rem;
 }
