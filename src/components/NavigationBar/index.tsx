@@ -9,16 +9,6 @@ import {
 } from "react";
 
 export default function NavigationBar() {
-  const [flower, setFlower] = useState("");
-
-  function onClick(event: React.MouseEvent<HTMLButtonElement>) {
-    event.preventDefault();
-    return console.log("clicked");
-  }
-
-  function onChange(event: React.FormEvent<HTMLInputElement>) {
-    setFlower(event.currentTarget.value);
-  }
   return (
     <>
       <div className={`flex flex-col ${styles.container}`}>
@@ -33,9 +23,8 @@ export default function NavigationBar() {
             <input
               className={`flex ${styles.searchInput}`}
               placeholder="Type in the Flower Name"
-              onChange={onChange}
             />
-            <button className={`${styles.searchbtn}`} onClick={onClick}>
+            <button className={`${styles.searchbtn}`}>
               <img src={search} />
             </button>
           </div>
