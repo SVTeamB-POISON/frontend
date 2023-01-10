@@ -1,17 +1,115 @@
 .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
-  overflow-x: hidden;
-  padding-left: 5rem;
-  padding-top: 10rem;
+  overflow: hidden;
+  background: linear-gradient(180deg, #a8b0d7 0%, rgba(168, 176, 215, 0) 100%);
 }
-.button {
-  color: var(--button-color);
-}
+
 .backgroundImg {
   position: absolute;
   bottom: 0;
   width: 100vw;
-  min-width: 1200px;
   height: 300px;
+  max-height: 35vh;
+  z-index: -10;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  width: 70%;
+  height: 44rem;
+}
+.logo {
+  width: 10rem;
+}
+
+.searchContainer {
+  display: flex;
+  gap: 1.2rem;
+  width: 50%;
+  min-width: 30rem;
+  height: 3.8rem;
+}
+.searchInput {
+  flex: 0.8;
+  border-radius: 10px;
+  outline: none;
+  padding-left: 1.5rem;
+  font-size: 1.6rem;
+  box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+}
+.searchbtn {
+  flex: 0.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+  & > img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.dropContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  width: 50%;
+  min-width: 30rem;
+  height: 20rem;
+  background-color: white;
+  border-radius: 20px;
+  & > p {
+    font-size: 1.6rem;
+    color: var(--purple-color);
+  }
+}
+.dropzone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 70%;
+  border: 3px dashed var(--purple-color);
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+.preview {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.dropping {
+  background: rgba(0, 0, 0, 0.35);
+}
+.uploadbtn {
+  width: 6rem;
+  height: 2.8rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: 3px solid var(--button-color);
+  border-radius: 10px;
+  color: var(--button-color);
+  font-size: 1.6rem;
+  &:hover {
+    color: white;
+    background-color: var(--button-color);
+  }
 }
