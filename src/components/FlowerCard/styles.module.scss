@@ -8,6 +8,10 @@
   &:hover {
     opacity: 0.8;
   }
+  @include tablet {
+    width: 20rem;
+    height: 14rem;
+  }
 }
 .imgContainer {
   width: 100%;
