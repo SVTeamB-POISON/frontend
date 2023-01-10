@@ -1,9 +1,24 @@
+@import "@/media.scss";
+
 .container {
   width: 100vw;
   height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  place-items: center;
   overflow-x: hidden;
+  overflow-y: scroll;
   padding-left: 5rem;
+  gap: 3rem;
+  z-index: 1;
   padding-top: 10rem;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include desktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 .button {
   color: var(--button-color);
@@ -14,4 +29,5 @@
   width: 100vw;
   min-width: 1200px;
   height: 300px;
+  z-index: -10;
 }

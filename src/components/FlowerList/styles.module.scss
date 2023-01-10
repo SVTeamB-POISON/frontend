@@ -1,27 +1,41 @@
-.FlowerContainer {
-  width: 15rem;
-  height: 10rem;
+@import "@/media.scss";
+
+.flowerContainer {
+  width: 26rem;
+  height: 18rem;
+  border-radius: 20px;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 .imgContainer {
-  width: 18rem;
-  height: 10rem;
-  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
   background-size: cover;
+  position: relative;
 }
 .poisonLogo {
-  position: relative;
-  width: 5rem;
-  height: 5rem;
+  position: absolute;
+  width: 8rem;
   z-index: 1;
-  top: -2rem;
-  left: 15rem;
+  top: -15%;
+  right: -10%;
 }
 
 .nameContainer {
   position: absolute;
   margin-top: 50px;
-  width: 18rem;
+  bottom: 0;
+  width: 100%;
+  height: 4rem;
   background: rgba(0, 0, 0, 0.5);
-  padding-left: 10px;
-  border-radius: 5px;
+  padding-left: 1.8rem;
+  padding-right: 1.8rem;
+  border-radius: 0 0 20px 20px;
+  & > p {
+    font-size: 2.1rem;
+    line-height: 4rem;
+  }
 }

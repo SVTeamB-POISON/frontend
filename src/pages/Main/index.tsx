@@ -19,7 +19,7 @@ export default function MainPage() {
 
   return (
     <>
-      <ul className={styles.container}>
+      <ul className={`gird ${styles.container}`}>
         {data?.map((result, idx) => (
           <FlowerList key={idx} list={result}></FlowerList>
         ))}
