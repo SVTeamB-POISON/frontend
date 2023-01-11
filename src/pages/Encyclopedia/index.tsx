@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { QueryKeys, getClient, restFetcher } from "@/queryClient";
-import { EncyData } from "@/types/ency";
+import { EncyData, EncyResponse } from "@/types/ency";
 import { useQuery } from "@tanstack/react-query";
 import FlowerCard from "@/components/FlowerCard";
 import NavigationBar from "@/components/NavigationBar";
@@ -14,24 +14,10 @@ type LocationState = {
 
 export default function EncyclopediaPage() {
   const location = useLocation();
-  const searchName = (location.state as LocationState)?.name || "";
-  const queryClient = getClient();
-  const { data } = useQuery<EncyData[]>([QueryKeys.ENCY], () =>
-    restFetcher({
-      method: "GET",
-      path: "/flowers",
-      params: {
-        name: searchName,
-      },
-    }),
+  const { data, isLoading } = useQuery<EncyResponse>(["data"], () =>
+    restFetcher({ method: "GET", path: "/flowers" }),
   );
-
-  useEffect(() => {
-    if (searchName !== null) {
-      queryClient.invalidateQueries([QueryKeys.ENCY]);
-    }
-  }, []);
-
+  if (isLoading) return <div>Loading...</div>;
   return (
     <div className={`flex flex-col ${styles.container}`}>
       <NavigationBar />
@@ -57,7 +43,7 @@ export default function EncyclopediaPage() {
         }}
       >
         <ul className={styles.cardList}>
-          {data?.map((result, idx) => (
+          {data?.data.map((result, idx) => (
             <FlowerCard key={idx} list={result}></FlowerCard>
           ))}
         </ul>
