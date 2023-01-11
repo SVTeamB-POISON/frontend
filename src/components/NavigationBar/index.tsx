@@ -29,10 +29,12 @@ export default function NavigationBar() {
       },
     });
   };
+  const navigate = useNavigate();
+  const goToHome = () => navigate("/");
   return (
     <div className={`flex flex-col ${styles.container}`}>
       <div className={`flex flex-row justify-between ${styles.searchSection}`}>
-        <div className={`flex flex-row ${styles.title}`}>
+        <div className={`flex flex-row ${styles.title}`} onClick={goToHome}>
           <img className={`${styles.logoImg}`} src={logo}></img>
           <h1 className={`${styles.logoName}`}>POISON</h1>
         </div>

@@ -1,3 +1,5 @@
+@import "@/media.scss";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -7,6 +9,10 @@
   cursor: pointer;
   &:hover {
     opacity: 0.8;
+  }
+  @include tablet {
+    width: 24rem;
+    height: 29.6rem;
   }
 }
 .imageSection {

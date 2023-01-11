@@ -56,10 +56,10 @@ const encylist: EncyData[] = [
 
 export const handlers = [
   // 테스트 mock api
-  rest.get("/test", (req, res, ctx) => {
+  rest.get("/api/test", (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(dummy));
   }),
-  rest.get("/result", (req, res, ctx) => {
+  rest.get("/api/result", (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(result));
   }),
   rest.get("/api/flowers", (req, res, ctx) => {
@@ -67,5 +67,9 @@ export const handlers = [
     const regex = new RegExp(`.*${name}.*`, "g");
     const R = encylist.filter((item) => item.name.match(regex));
     return res(ctx.status(200), ctx.json(R));
+  }),
+  rest.post("/api/flowers/image", async (req, res, ctx) => {
+    const { id } = await req.json();
+    return res(ctx.status(200), ctx.delay(2000), ctx.json(result));
   }),
 ];
