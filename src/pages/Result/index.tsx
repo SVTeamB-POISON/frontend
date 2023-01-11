@@ -1,19 +1,24 @@
+import NavigationBar from "@/components/NavigationBar";
 import ResultCard from "@/components/ResultCard";
-import { QueryKeys, restFetcher } from "@/queryClient";
 import { ResultData } from "@/types/result";
-import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "react-router-dom";
 import styles from "./styles.module.scss";
-import React from "react";
+
+type RouterState = {
+  data: ResultData[];
+};
 
 export default function ResultPage() {
-  const { data } = useQuery<ResultData[]>([QueryKeys.RESULT], () =>
-    restFetcher({ method: "GET", path: "/result" }),
-  );
+  const location = useLocation();
+  const data = (location.state as RouterState).data;
   return (
-    <ul className={styles.container}>
-      {data?.map((result, idx) => (
-        <ResultCard key={idx} result={result} />
-      ))}
-    </ul>
+    <div className={styles.container}>
+      <NavigationBar />
+      <ul className={styles.resultContainer}>
+        {data?.map((result, idx) => (
+          <ResultCard key={idx} result={result} />
+        ))}
+      </ul>
+    </div>
   );
 }

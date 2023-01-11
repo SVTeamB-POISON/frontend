@@ -38,7 +38,12 @@ export default function MainPage() {
     const formData = new FormData();
     formData.append("id", files[0]);
     mutate(formData, {
-      onSuccess: () => navigate("/result"),
+      onSuccess: (data) =>
+        navigate("/result", {
+          state: {
+            data,
+          },
+        }),
     });
   };
   const { getRootProps, getInputProps, isDragAccept } = useDropzone({

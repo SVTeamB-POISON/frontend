@@ -66,7 +66,6 @@ export const handlers = [
   }),
   rest.post("/api/flowers/image", async (req, res, ctx) => {
     const { id } = await req.json();
-    console.log(id);
     return res(ctx.status(200), ctx.delay(2000), ctx.json(result));
   }),
 ];

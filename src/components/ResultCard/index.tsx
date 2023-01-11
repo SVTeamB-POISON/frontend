@@ -11,7 +11,7 @@ type ResultCardProps = {
 
 export default function ResultCard({ result }: ResultCardProps) {
   return (
-    <div className={styles.container}>
+    <li className={styles.container}>
       <div
         className={styles.imageSection}
         style={{ backgroundImage: `url(${result.s3_url})` }}
@@ -39,6 +39,6 @@ export default function ResultCard({ result }: ResultCardProps) {
           <p>꽃말: {result.flower_language}</p>
         </div>
       </div>
-    </div>
+    </li>
   );
 }

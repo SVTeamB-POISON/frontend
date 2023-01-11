@@ -12,7 +12,7 @@ export default function EncyclopediaPage() {
   );
   return (
     <div className={`flex flex-col ${styles.container}`}>
-      <NavigationBar></NavigationBar>
+      <NavigationBar />
       <div className={`flex flex-col  ${styles.textContainer}`}>
         <h1>도감</h1>
         <p>식물에 대해 찾아보세요!</p>
