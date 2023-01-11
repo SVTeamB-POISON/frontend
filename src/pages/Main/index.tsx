@@ -22,7 +22,7 @@ interface FileType extends File {
 
 export default function MainPage() {
   const { mutate, isLoading } = useMutation((formData: FormData) =>
-    restFetcher({ method: "POST", path: "/api/flowers/image", body: formData }),
+    restFetcher({ method: "POST", path: "/flowers/image", body: formData }),
   );
   const navigate = useNavigate();
   const [files, setFiles] = useState<FileType[]>([]);
