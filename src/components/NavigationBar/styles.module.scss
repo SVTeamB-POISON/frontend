@@ -1,0 +1,101 @@
+.container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 85px;
+  align-items: center;
+  background-color: var(--background-color);
+  z-index: 100;
+}
+
+.searchSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90vw;
+  max-width: 1400px;
+}
+
+.title {
+  cursor: pointer;
+  :hover {
+    opacity: 0.8;
+  }
+}
+
+.logoImg {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: 5rem;
+  height: 5rem;
+}
+
+.logoName {
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
+  font-family: "Sunshiney", cursive;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  width: 15rem;
+  height: 2rem;
+}
+
+.searchInput {
+  width: 13rem;
+  height: 3rem;
+  border-width: 2px;
+  border-radius: 10px;
+  outline: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-color: #b7b7b7;
+  background-color: white;
+  &:focus {
+    border-color: var(--purple-color);
+  }
+  &:focus::placeholder {
+    color: transparent;
+  }
+}
+
+.searchbtn {
+  margin: -10px;
+  width: 3rem;
+  height: 3rem;
+  border-width: 2px;
+  padding: 5px;
+  background-color: white;
+  border-radius: 0 10px 10px 0;
+  border-color: #b7b7b7;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  &:hover .searchIcon {
+    filter: invert(13%) sepia(42%) saturate(5458%) hue-rotate(275deg)
+      brightness(50%) contrast(109%);
+  }
+  &:hover {
+    border-color: var(--purple-color);
+  }
+}
+
+.navline {
+  width: 90vw;
+  height: 5px;
+  background-color: white;
+  border-radius: 10px;
+  max-width: 1400px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.searchIcon {
+  width: 1.5rem;
+}

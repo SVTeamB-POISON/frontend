@@ -4,6 +4,7 @@ import sampleImg from "@/assets/image1.svg";
 import logo from "@/assets/logo.svg";
 import DonutChart from "../DonutChart";
 import { ResultData } from "@/types/result";
+import NavigationBar from "../NavigationBar";
 
 type ResultCardProps = {
   result: ResultData;
@@ -11,7 +12,7 @@ type ResultCardProps = {
 
 export default function ResultCard({ result }: ResultCardProps) {
   return (
-    <div className={styles.container}>
+    <li className={styles.container}>
       <div
         className={styles.imageSection}
         style={{ backgroundImage: `url(${result.s3_url})` }}
@@ -39,6 +40,6 @@ export default function ResultCard({ result }: ResultCardProps) {
           <p>꽃말: {result.flower_language}</p>
         </div>
       </div>
-    </div>
+    </li>
   );
 }

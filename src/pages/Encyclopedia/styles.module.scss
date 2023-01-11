@@ -1,19 +1,10 @@
 @import "@/media.scss";
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100vw;
   min-height: calc(100vh - 85px);
+  background-color: var(--background-color);
   margin-top: 85px;
-  overflow: scroll;
-  background: var(--background-color);
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
 }
 .textContainer {
   width: 100%;
@@ -30,12 +21,18 @@
   margin-top: 5rem;
   margin-bottom: 8rem;
 }
+.cardListContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-.resultContainer {
+.cardList {
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(1, 1fr);
   place-items: center;
-  gap: 5rem;
+  gap: 4rem;
+  z-index: 1;
   margin-bottom: 5rem;
   @include tablet {
     grid-template-columns: repeat(2, 1fr);

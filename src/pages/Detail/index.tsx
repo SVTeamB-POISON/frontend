@@ -4,10 +4,10 @@ import { QueryKeys, restFetcher } from "@/queryClient";
 import { useQuery } from "@tanstack/react-query";
 
 export default function DetailPage() {
-  const { data, isLoading } = useQuery(["detail"], () =>
+  const { data, isLoading } = useQuery([QueryKeys.DETAIL], () =>
     restFetcher({
       method: "GET",
-      path: "/api/flowers/details",
+      path: "/flowers/details",
       params: { name: "둥굴레" },
     }),
   );

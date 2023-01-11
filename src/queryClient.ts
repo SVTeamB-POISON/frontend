@@ -25,9 +25,8 @@ export const getClient = (() => {
   };
 })();
 
-// const { VITE_BASE_URL } = import.meta.env;
-// import.meta.env: Vite가 환경변수를 저장하는 곳
-const BASE_URL = import.meta.env.DEV ? "" : "http://localhost:8000/api";
+//const { VITE_BASE_URL } = import.meta.env;
+const BASE_URL = import.meta.env.DEV ? "/api" : "http://localhost:8000/api";
 
 export const restFetcher = async ({
   method,
@@ -57,4 +56,9 @@ export const restFetcher = async ({
   }
 };
 
-export const QueryKeys = { TEST: "TEST", RESULT: "RESULT", DETAIL: "DETAIL" };
+export const QueryKeys = {
+  TEST: "TEST",
+  ENCY: "ENCY",
+  RESULT: "RESULT",
+  DETAIL: "DETAIL",
+};
