@@ -44,9 +44,6 @@ export const restFetcher = async ({
     let url = `${BASE_URL}${path}`;
     const axiosConfig: AxiosRequestConfig = {
       method,
-      headers: {
-        "Content-Type": "application/json",
-      },
     };
     if (body) axiosConfig.data = body;
     if (params) {
@@ -60,4 +57,4 @@ export const restFetcher = async ({
   }
 };
 
-export const QueryKeys = { TEST: "TEST", RESULT: "RESULT" };
+export const QueryKeys = { TEST: "TEST", RESULT: "RESULT", DETAIL: "DETAIL" };

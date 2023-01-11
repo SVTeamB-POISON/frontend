@@ -1,14 +1,20 @@
 import DetailModal from "@/components/DetailModal";
-import { QueryKeys, restFetcher } from "@/queryClient";
-import { DetailData } from "@/types/detail";
 import styles from "./styles.module.scss";
-import React from "react";
+import { QueryKeys, restFetcher } from "@/queryClient";
+import { useQuery } from "@tanstack/react-query";
 
-// 일단은 주석처리하고 하드코딩하자!
 export default function DetailPage() {
+  const { data, isLoading } = useQuery(["detail"], () =>
+    restFetcher({
+      method: "GET",
+      path: "/api/flowers/details",
+      params: { name: "둥굴레" },
+    }),
+  );
+  if (isLoading) return <div>Loading...</div>;
   return (
     <ul className={styles.container}>
-      <DetailModal />
+      <DetailModal detail={data} />
     </ul>
   );
 }

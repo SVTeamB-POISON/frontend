@@ -1,3 +1,4 @@
+import { DetailData } from "@/types/detail";
 import { ResultData } from "./../types/result";
 import { rest } from "msw";
 
@@ -34,6 +35,45 @@ const result: ResultData[] = [
   },
 ];
 
+const detail: DetailData[] = [
+  {
+    id: 5,
+    name: "수국",
+    s3_url:
+      "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/4432eed2-4ae8-42e5-a0a1-8b64df186b01",
+    poison: true,
+    symptom: "호흡곤란, 저혈압",
+    scientific_name: "Hydrangea macrophylla",
+    flower_language: "진심, 변덕, 소녀의 꿈",
+    detail:
+      "수국은 수국과의 갈잎떨기나무이며, 초 여름에서 무더운 여름 중순까지 피는 꽃이다.\n 본래는 중국 원산이지만, 현재 중국에서는 자생군락이 발견되지 않으며, 일본에서 품종 개량이 많이 되었다. 만화경, 미카의 물떼새 등 특이한 이름으로 판매 중.\n 시중에서 파는 수국보다 꽤 비싸지만 정말 풍성하고 아름다운 꽃이 피어 일본 수국은 항상 인기가 많다.",
+  },
+  {
+    id: 5,
+    name: "할미꽃",
+    s3_url:
+      "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/4432eed2-4ae8-42e5-a0a1-8b64df186b01",
+    poison: true,
+    symptom: "호흡곤란, 저혈압",
+    scientific_name: "Hydrangea macrophylla",
+    flower_language: "진심, 변덕, 소녀의 꿈",
+    detail:
+      "수국은 수국과의 갈잎떨기나무이며, 초 여름에서 무더운 여름 중순까지 피는 꽃이다.\n 본래는 중국 원산이지만, 현재 중국에서는 자생군락이 발견되지 않으며, 일본에서 품종 개량이 많이 되었다. 만화경, 미카의 물떼새 등 특이한 이름으로 판매 중.\n 시중에서 파는 수국보다 꽤 비싸지만 정말 풍성하고 아름다운 꽃이 피어 일본 수국은 항상 인기가 많다.",
+  },
+  {
+    id: 5,
+    name: "둥굴레",
+    s3_url:
+      "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/4432eed2-4ae8-42e5-a0a1-8b64df186b01",
+    poison: true,
+    symptom: "호흡곤란, 저혈압",
+    scientific_name: "Hydrangea macrophylla",
+    flower_language: "진심, 변덕, 소녀의 꿈",
+    detail:
+      "수국은 수국과의 갈잎떨기나무이며, 초 여름에서 무더운 여름 중순까지 피는 꽃이다.\n 본래는 중국 원산이지만, 현재 중국에서는 자생군락이 발견되지 않으며, 일본에서 품종 개량이 많이 되었다. 만화경, 미카의 물떼새 등 특이한 이름으로 판매 중.\n 시중에서 파는 수국보다 꽤 비싸지만 정말 풍성하고 아름다운 꽃이 피어 일본 수국은 항상 인기가 많다.",
+  },
+];
+
 export const handlers = [
   // 테스트 mock api
   rest.get("/test", (req, res, ctx) => {
@@ -41,5 +81,18 @@ export const handlers = [
   }),
   rest.get("/result", (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(result));
+  }),
+  rest.get("/api/flowers/details", (req, res, ctx) => {
+    const name = req.url.searchParams.get("name"); // QueryParameter로 name 추출
+    const data = detail.filter((item) => item.name === name);
+    if (data.length === 0) {
+      return res(
+        ctx.status(404),
+        ctx.json({
+          message: "데이터가 없습니다.",
+        }),
+      );
+    }
+    return res(ctx.status(200), ctx.json(data[0]));
   }),
 ];
