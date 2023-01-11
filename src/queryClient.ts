@@ -56,4 +56,9 @@ export const restFetcher = async ({
   }
 };
 
-export const QueryKeys = { TEST: "TEST", ENCY: "ENCY", RESULT: "RESULT" };
+export const QueryKeys = {
+  TEST: "TEST",
+  ENCY: "ENCY",
+  RESULT: "RESULT",
+  DETAIL: "DETAIL",
+};
