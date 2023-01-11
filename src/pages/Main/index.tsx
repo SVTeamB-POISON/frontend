@@ -10,10 +10,11 @@ import {
 } from "react-dropzone";
 import LogoTitle from "@/components/LogoTitle";
 import EncyBtn from "@/components/EncyclopediaBtn";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { restFetcher } from "@/queryClient";
 import Loading from "@/components/Loading";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 interface FileType extends File {
   preview: string;
@@ -96,7 +97,15 @@ function Content({
   return (
     <div className={styles.content}>
       <LogoTitle />
-      <div className={`flex flex-row ${styles.searchContainer}`}>
+      <motion.div
+        className={`flex flex-row ${styles.searchContainer}`}
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          transition: { delay: 0.3, duration: 0.8 },
+        }}
+      >
         <input
           className={`flex border-blue-600  ${styles.searchInput}`}
           placeholder="Type in the Flower Name"
@@ -104,8 +113,16 @@ function Content({
         <button className={`${styles.searchbtn} bg-white`}>
           <img src={searchIcon} />
         </button>
-      </div>
-      <div className={styles.dropContainer}>
+      </motion.div>
+      <motion.div
+        className={styles.dropContainer}
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          transition: { delay: 0.3, duration: 0.8 },
+        }}
+      >
         <div
           className={`${styles.dropzone} ${isDragAccept && styles.dropping}`}
           {...getRootProps()}
@@ -124,7 +141,7 @@ function Content({
         ) : (
           <p>파일 선택 또는 드래그</p>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 }

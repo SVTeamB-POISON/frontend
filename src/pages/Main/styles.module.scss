@@ -7,7 +7,7 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: linear-gradient(180deg, #a8b0d7 0%, rgba(168, 176, 215, 0) 100%);
+  background: linear-gradient(180deg, #a8b0d7 0%, #ffffff 100%);
 }
 
 .backgroundImg {
@@ -16,7 +16,6 @@
   width: 100vw;
   height: 300px;
   max-height: 35vh;
-  z-index: -10;
 }
 
 .content {
@@ -28,6 +27,7 @@
   width: 70%;
   max-width: 1176px;
   height: 44rem;
+  z-index: 10;
 }
 .logo {
   width: 10rem;

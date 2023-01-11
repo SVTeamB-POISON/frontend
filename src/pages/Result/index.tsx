@@ -1,6 +1,7 @@
 import NavigationBar from "@/components/NavigationBar";
 import ResultCard from "@/components/ResultCard";
 import { ResultData } from "@/types/result";
+import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import styles from "./styles.module.scss";
 
@@ -14,11 +15,25 @@ export default function ResultPage() {
   return (
     <div className={styles.container}>
       <NavigationBar />
-      <ul className={styles.resultContainer}>
-        {data?.map((result, idx) => (
-          <ResultCard key={idx} result={result} />
-        ))}
-      </ul>
+      <motion.div
+        className={styles.content}
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.3 },
+        }}
+      >
+        <div className={`flex flex-col  ${styles.textContainer}`}>
+          <h1>위험해요!</h1>
+          <p>독초일 수 있어요!</p>
+        </div>
+        <ul className={styles.resultContainer}>
+          {data?.map((result, idx) => (
+            <ResultCard key={idx} result={result} />
+          ))}
+        </ul>
+      </motion.div>
     </div>
   );
 }
