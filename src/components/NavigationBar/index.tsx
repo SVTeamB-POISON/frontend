@@ -14,11 +14,13 @@ export default function NavigationBar() {
   const [flowerName, setflowerName] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+  const goToHome = () => navigate("/");
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setflowerName(value);
   };
+
   const goEncy = () => {
     if (location.pathname === "/encyclopedia") {
       window.location.reload();
@@ -29,8 +31,7 @@ export default function NavigationBar() {
       },
     });
   };
-  const navigate = useNavigate();
-  const goToHome = () => navigate("/");
+
   return (
     <div className={`flex flex-col ${styles.container}`}>
       <div className={`flex flex-row justify-between ${styles.searchSection}`}>

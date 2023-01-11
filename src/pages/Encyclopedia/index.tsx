@@ -6,11 +6,12 @@ import { useQuery } from "@tanstack/react-query";
 import FlowerCard from "@/components/FlowerCard";
 import NavigationBar from "@/components/NavigationBar";
 import { motion } from "framer-motion";
-
 import { useLocation } from "react-router-dom";
+
 type LocationState = {
   name?: string;
 };
+
 export default function EncyclopediaPage() {
   const location = useLocation();
   const searchName = (location.state as LocationState)?.name || "";
@@ -18,13 +19,12 @@ export default function EncyclopediaPage() {
   const { data } = useQuery<EncyData[]>([QueryKeys.ENCY], () =>
     restFetcher({
       method: "GET",
-      path: "/api/flowers",
+      path: "/flowers",
       params: {
         name: searchName,
       },
     }),
   );
-  console.log(searchName);
 
   useEffect(() => {
     if (searchName !== null) {
