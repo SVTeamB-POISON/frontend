@@ -1,23 +1,32 @@
-import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
-import { QueryKeys, getClient, restFetcher } from "@/queryClient";
-import { EncyData, EncyResponse } from "@/types/ency";
-import { useQuery } from "@tanstack/react-query";
+import { QueryKeys, restFetcher } from "@/queryClient";
+import { EncyResponse } from "@/types/ency";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import FlowerCard from "@/components/FlowerCard";
 import NavigationBar from "@/components/NavigationBar";
 import { motion } from "framer-motion";
-import { useLocation } from "react-router-dom";
-
-type LocationState = {
-  name?: string;
-};
+import InfiniteScroll from "react-infinite-scroller";
+import Loading from "@/components/Loading";
 
 export default function EncyclopediaPage() {
-  const location = useLocation();
-  const { data, isLoading } = useQuery<EncyResponse>(["data"], () =>
-    restFetcher({ method: "GET", path: "/flowers" }),
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isLoading,
+    isFetching,
+    isError,
+    error,
+  } = useInfiniteQuery<EncyResponse, Error>(
+    [QueryKeys.ENCY],
+    ({ pageParam = "/flowers" }) =>
+      restFetcher({ method: "GET", path: pageParam }),
+    {
+      getNextPageParam: (lastPage) => lastPage.nextPage || undefined,
+    },
   );
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div className="loading">Loading..</div>;
+  if (isError) return <div>Error! {error.toString()}</div>;
   return (
     <div className={`flex flex-col ${styles.container}`}>
       <NavigationBar />
@@ -42,11 +51,16 @@ export default function EncyclopediaPage() {
           transition: { delay: 0.3, duration: 0.8 },
         }}
       >
-        <ul className={styles.cardList}>
-          {data?.data.map((result, idx) => (
-            <FlowerCard key={idx} list={result}></FlowerCard>
-          ))}
-        </ul>
+        {isFetching && <Loading />}
+        <InfiniteScroll loadMore={() => fetchNextPage()} hasMore={hasNextPage}>
+          <ul className={styles.cardList}>
+            {data.pages.map((pageData) => {
+              return pageData.data.map((result, idx) => (
+                <FlowerCard key={idx} list={result} />
+              ));
+            })}
+          </ul>
+        </InfiniteScroll>
       </motion.div>
     </div>
   );

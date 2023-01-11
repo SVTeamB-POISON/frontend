@@ -55,7 +55,7 @@ const encylist: EncyData[] = [
 const encyPage1: EncyResponse = {
   hasNextPage: true,
   hasPrevPage: false,
-  nextPage: "api/flowers?page=2",
+  nextPage: "/flowers?page=2",
   prevPage: null,
   data: [
     {
@@ -99,8 +99,8 @@ const encyPage1: EncyResponse = {
 const encyPage2: EncyResponse = {
   hasNextPage: true,
   hasPrevPage: true,
-  nextPage: "api/flowers?page=3",
-  prevPage: "api/flowers?page=1",
+  nextPage: "/flowers?page=3",
+  prevPage: "/flowers?page=1",
   data: [
     {
       name: "수국",
@@ -144,7 +144,7 @@ const encyPage3: EncyResponse = {
   hasNextPage: false,
   hasPrevPage: true,
   nextPage: null,
-  prevPage: "api/flowers?page=2",
+  prevPage: "/flowers?page=2",
   data: [
     {
       name: "해바라기",
@@ -184,8 +184,7 @@ export const handlers = [
       return res(ctx.status(200), ctx.json(encyPage3));
     }
   }),
-  rest.post("/api/flowers/image", async (req, res, ctx) => {
-    const { id } = await req.json();
+  rest.post("/api/flowers/image", (req, res, ctx) => {
     return res(ctx.status(200), ctx.delay(2000), ctx.json(result));
   }),
 ];
