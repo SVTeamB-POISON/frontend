@@ -4,6 +4,7 @@ import { ResultData } from "@/types/result";
 import { useQuery } from "@tanstack/react-query";
 import styles from "./styles.module.scss";
 import React from "react";
+import NavigationBar from "@/components/NavigationBar";
 
 export default function ResultPage() {
   const { data } = useQuery<ResultData[]>([QueryKeys.RESULT], () =>
