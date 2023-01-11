@@ -4,6 +4,7 @@ import sampleImg from "@/assets/image1.svg";
 import logo from "@/assets/logo.svg";
 import DonutChart from "../DonutChart";
 import { ResultData } from "@/types/result";
+import NavigationBar from "../NavigationBar";
 
 type ResultCardProps = {
   result: ResultData;

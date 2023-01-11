@@ -1,11 +1,37 @@
 import styles from "./styles.module.scss";
 import logo from "@/assets/logo.svg";
 import search from "@/assets/search.svg";
-import { useNavigate } from "react-router-dom";
+import { QueryKeys, getClient } from "@/queryClient";
+import React, {
+  ChangeEventHandler,
+  InputHTMLAttributes,
+  MouseEventHandler,
+  useState,
+} from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function NavigationBar() {
+  const [flowerName, setflowerName] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
   const goToHome = () => navigate("/");
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setflowerName(value);
+  };
+
+  const goEncy = () => {
+    if (location.pathname === "/encyclopedia") {
+      window.location.reload();
+    }
+    navigate("/encyclopedia", {
+      state: {
+        name: flowerName,
+      },
+    });
+  };
+
   return (
     <div className={`flex flex-col ${styles.container}`}>
       <div className={`flex flex-row justify-between ${styles.searchSection}`}>
@@ -17,8 +43,14 @@ export default function NavigationBar() {
           <input
             className={`flex ${styles.searchInput}`}
             placeholder="Type in the Flower Name"
+            onChange={onChange}
+            value={flowerName}
           />
-          <button className={`flex ${styles.searchbtn}`}>
+          <button
+            type="submit"
+            className={`flex ${styles.searchbtn}`}
+            onClick={goEncy}
+          >
             <img src={search} className={styles.searchIcon} />
           </button>
         </div>

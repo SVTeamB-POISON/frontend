@@ -1,5 +1,6 @@
 import { ResultData } from "./../types/result";
 import { EncyData } from "@/types/ency";
+import { parseMutationArgs } from "@tanstack/react-query";
 import { rest } from "msw";
 const dummy = "테스트입니다.";
 const result: ResultData[] = [
@@ -35,7 +36,7 @@ const result: ResultData[] = [
 ];
 const encylist: EncyData[] = [
   {
-    name: "할미꽃",
+    name: "둥미꽃",
     s3_url:
       "https://cdn.crowdpic.net/detail-thumb/thumb_d_58F053194EB94368129687F3BDBF8D86.jpg",
     poison: true,
@@ -62,7 +63,10 @@ export const handlers = [
     return res(ctx.status(200), ctx.json(result));
   }),
   rest.get("/api/flowers", (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(encylist));
+    const name = req.url.searchParams.get("name");
+    const regex = new RegExp(`.*${name}.*`, "g");
+    const R = encylist.filter((item) => item.name.match(regex));
+    return res(ctx.status(200), ctx.json(R));
   }),
   rest.post("/api/flowers/image", async (req, res, ctx) => {
     const { id } = await req.json();
