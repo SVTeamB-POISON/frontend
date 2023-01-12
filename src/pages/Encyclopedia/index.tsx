@@ -1,14 +1,23 @@
 import styles from "./styles.module.scss";
 import { QueryKeys, restFetcher } from "@/queryClient";
-import { EncyResponse } from "@/types/ency";
+import { EncyData, EncyResponse } from "@/types/ency";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import FlowerCard from "@/components/FlowerCard";
 import NavigationBar from "@/components/NavigationBar";
 import { motion } from "framer-motion";
 import InfiniteScroll from "react-infinite-scroller";
 import Loading from "@/components/Loading";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+type LocationState = {
+  flowerName: string;
+} | null;
 
 export default function EncyclopediaPage() {
+  const location = useLocation();
+  const flowerName = (location.state as LocationState)?.flowerName || null;
+  const [isSearch, setIsSearch] = useState(false);
   const {
     data,
     fetchNextPage,
@@ -25,8 +34,31 @@ export default function EncyclopediaPage() {
       getNextPageParam: (lastPage) => lastPage.nextPage || undefined,
     },
   );
-  if (isLoading) return <div className="loading">Loading..</div>;
-  if (isError) return <div>Error! {error.toString()}</div>;
+
+  const {
+    data: searchData,
+    fetchNextPage: searchFetchNextPage,
+    hasNextPage: searchHasNextPage,
+    isLoading: searchIsLoading,
+    isFetching: searchIsFetching,
+    isError: searchIsError,
+  } = useInfiniteQuery<EncyResponse, Error>(
+    ["search"],
+    ({ pageParam = `/flowers?name=${flowerName}` }) =>
+      restFetcher({
+        method: "GET",
+        path: pageParam,
+      }),
+    {
+      getNextPageParam: (lastPage) => lastPage.nextPage || undefined,
+    },
+  );
+  useEffect(() => {
+    if (flowerName) setIsSearch(true);
+    if (!flowerName) setIsSearch(false);
+  }, [flowerName]);
+  if (isLoading || searchIsLoading) return <Loading />;
+  if (isError || searchIsError) return <div>Error! {error?.toString()}</div>;
   return (
     <div className={`flex flex-col ${styles.container}`}>
       <NavigationBar />
@@ -51,16 +83,34 @@ export default function EncyclopediaPage() {
           transition: { delay: 0.3, duration: 0.8 },
         }}
       >
-        {isFetching && <Loading />}
-        <InfiniteScroll loadMore={() => fetchNextPage()} hasMore={hasNextPage}>
-          <ul className={styles.cardList}>
-            {data.pages.map((pageData) => {
-              return pageData.data.map((result, idx) => (
-                <FlowerCard key={idx} list={result} />
-              ));
-            })}
-          </ul>
-        </InfiniteScroll>
+        {(isFetching || searchIsFetching) && <Loading />}
+        {isSearch ? (
+          <InfiniteScroll
+            loadMore={() => searchFetchNextPage()}
+            hasMore={searchHasNextPage}
+          >
+            <ul className={styles.cardList}>
+              {searchData.pages.map((pageData) => {
+                return pageData.data.map((result, idx) => (
+                  <FlowerCard key={idx} list={result} />
+                ));
+              })}
+            </ul>
+          </InfiniteScroll>
+        ) : (
+          <InfiniteScroll
+            loadMore={() => fetchNextPage()}
+            hasMore={hasNextPage}
+          >
+            <ul className={styles.cardList}>
+              {data.pages.map((pageData) => {
+                return pageData.data.map((result, idx) => (
+                  <FlowerCard key={idx} list={result} />
+                ));
+              })}
+            </ul>
+          </InfiniteScroll>
+        )}
       </motion.div>
     </div>
   );

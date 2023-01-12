@@ -33,25 +33,27 @@ const result: ResultData[] = [
     acc: 15.6,
   },
 ];
-const encylist: EncyData[] = [
-  {
-    name: "둥미꽃",
-    s3_url:
-      "https://cdn.crowdpic.net/detail-thumb/thumb_d_58F053194EB94368129687F3BDBF8D86.jpg",
-    poison: true,
-  },
-  {
-    name: "둥굴레",
-    s3_url: "http://www.hortitimes.com/news/photo/first/201705/img_6971_1.jpg",
-    poison: false,
-  },
-  {
-    name: "데이지",
-    s3_url:
-      "https://cdn.crowdpic.net/detail-thumb/thumb_d_58F053194EB94368129687F3BDBF8D86.jpg",
-    poison: false,
-  },
-];
+
+const encySearch: EncyResponse = {
+  hasNextPage: true,
+  hasPrevPage: false,
+  nextPage: null,
+  prevPage: null,
+  data: [
+    {
+      name: "무궁화",
+      s3_url:
+        "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/ec77f951-52e6-49fb-ae3f-b7f312ca0e14",
+      poison: false,
+    },
+    {
+      name: "고사리",
+      s3_url:
+        "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/81584ad5-9a27-4173-abb8-27ab77caa387",
+      poison: true,
+    },
+  ],
+};
 const encyPage1: EncyResponse = {
   hasNextPage: true,
   hasPrevPage: false,
@@ -172,15 +174,13 @@ export const handlers = [
   rest.get("/api/flowers", (req, res, ctx) => {
     const page = req.url.searchParams.get("page");
     const name = req.url.searchParams.get("name");
-    if (name) {
-      const regex = new RegExp(`.*${name}.*`, "g");
-      const R = encylist.filter((item) => item.name.match(regex));
-      return res(ctx.status(200), ctx.json(R));
-    } else if (page === "1" || page === null) {
+    if (name && name !== "") {
+      return res(ctx.status(200), ctx.json(encySearch));
+    } else if (!name && (page === "1" || page === null)) {
       return res(ctx.status(200), ctx.json(encyPage1));
-    } else if (page === "2") {
+    } else if (!name && page === "2") {
       return res(ctx.status(200), ctx.json(encyPage2));
-    } else if (page === "3") {
+    } else if (!name && page === "3") {
       return res(ctx.status(200), ctx.json(encyPage3));
     }
   }),

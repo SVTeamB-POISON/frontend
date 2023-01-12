@@ -1,37 +1,22 @@
 import styles from "./styles.module.scss";
 import logo from "@/assets/logo.svg";
 import search from "@/assets/search.svg";
-import { QueryKeys, getClient } from "@/queryClient";
-import React, {
-  ChangeEventHandler,
-  InputHTMLAttributes,
-  MouseEventHandler,
-  useState,
-} from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import useInput from "@/hooks/useInput";
+import { useQuery } from "@tanstack/react-query";
+import { restFetcher } from "@/queryClient";
+import { EncyData } from "@/types/ency";
 
 export default function NavigationBar() {
-  const [flowerName, setflowerName] = useState("");
+  const [flowerName, handleFlowerName, setFlowerName] = useInput("");
   const navigate = useNavigate();
-  const location = useLocation();
   const goToHome = () => navigate("/");
-
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setflowerName(value);
-  };
-
-  const goEncy = () => {
-    if (location.pathname === "/encyclopedia") {
-      window.location.reload();
-    }
+  const goToEncy = async () => {
     navigate("/encyclopedia", {
-      state: {
-        name: flowerName,
-      },
+      state: { flowerName },
     });
+    setFlowerName("");
   };
-
   return (
     <div className={`flex flex-col ${styles.container}`}>
       <div className={`flex flex-row justify-between ${styles.searchSection}`}>
@@ -43,13 +28,13 @@ export default function NavigationBar() {
           <input
             className={`flex ${styles.searchInput}`}
             placeholder="Type in the Flower Name"
-            onChange={onChange}
+            onChange={handleFlowerName}
             value={flowerName}
           />
           <button
             type="submit"
             className={`flex ${styles.searchbtn}`}
-            onClick={goEncy}
+            onClick={goToEncy}
           >
             <img src={search} className={styles.searchIcon} />
           </button>
