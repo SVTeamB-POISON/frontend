@@ -5,6 +5,10 @@ import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import styles from "./styles.module.scss";
 
+type RouterState = {
+  data: ResultData[];
+};
+
 export default function ResultPage() {
   const location = useLocation();
   const data = (location.state as RouterState).data;
