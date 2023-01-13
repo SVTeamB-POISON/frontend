@@ -3,6 +3,7 @@ import { ResultData } from "./../types/result";
 import { EncyData } from "@/types/ency";
 import { parseMutationArgs } from "@tanstack/react-query";
 import { rest } from "msw";
+import { Rank } from "@/types/rank";
 const dummy = "테스트입니다.";
 const result: ResultData[] = [
   {
@@ -94,14 +95,54 @@ const detail: DetailData[] = [
   },
 ];
 
+const rank: Rank[] = [
+  {
+    name: "협죽도",
+    s3_url:
+      "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/4adff758-1c40-4ca0-ba4c-868c0c29f84a",
+    poison: true,
+    count: 10,
+  },
+  {
+    name: "민들레",
+    s3_url:
+      "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/65cd70f5-2ef0-45cc-a1cf-67c2be67f37f",
+    poison: false,
+    count: 3,
+  },
+  {
+    name: "독당근",
+    s3_url:
+      "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/454c9693-a8b4-4e08-bbe2-213f2bef09b0",
+    poison: true,
+    count: 30,
+  },
+  {
+    name: "튤립",
+    s3_url:
+      "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/8d114fbf-efcb-45ba-8e3b-9ac74ea06833",
+    poison: false,
+    count: 20,
+  },
+  {
+    name: "장미",
+    s3_url:
+      "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/9baacd40-d17f-404b-8029-fff7bbe2c808",
+    poison: false,
+    count: 230,
+  },
+];
+
 export const handlers = [
   // 테스트 mock api
   rest.get("/api/test", (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(dummy));
   }),
+
   rest.get("/api/result", (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(result));
   }),
+
   rest.get("/api/flowers/details", (req, res, ctx) => {
     const name = req.url.searchParams.get("name"); // QueryParameter로 name 추출
     const data = detail.filter((item) => item.name === name);
@@ -114,14 +155,21 @@ export const handlers = [
       );
     }
     return res(ctx.status(200), ctx.json(data[0]));
+  }),
+
   rest.get("/api/flowers", (req, res, ctx) => {
     const name = req.url.searchParams.get("name");
     const regex = new RegExp(`.*${name}.*`, "g");
     const R = encylist.filter((item) => item.name.match(regex));
     return res(ctx.status(200), ctx.json(R));
   }),
+
   rest.post("/api/flowers/image", async (req, res, ctx) => {
     const { id } = await req.json();
     return res(ctx.status(200), ctx.delay(2000), ctx.json(result));
+  }),
+
+  rest.post("/api/flowers/hour-ranking", (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(rank));
   }),
 ];

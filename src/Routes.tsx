@@ -5,6 +5,7 @@ const MainPage = lazy(() => import("@/pages/Main"));
 const ResultPage = lazy(() => import("@/pages/Result"));
 const EncyclopediaPage = lazy(() => import("@/pages/Encyclopedia"));
 const DetailPage = lazy(() => import("@/pages/Detail"));
+const Test = lazy(() => import("@/pages/TestPage"));
 
 export const routes = [
   {
@@ -15,6 +16,7 @@ export const routes = [
       { path: "/result", element: <ResultPage /> },
       { path: "/encyclopedia", element: <EncyclopediaPage /> },
       { path: "/detail", element: <DetailPage /> },
+      { path: "/test", element: <Test /> },
     ],
   },
 ];

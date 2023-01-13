@@ -1,0 +1,46 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  border-width: 10px;
+  border-color: black;
+  background-color: white;
+}
+.subContainer1 {
+  width: 10rem;
+  height: 10rem;
+  align-items: center;
+  justify-content: center;
+}
+.subContainer2 {
+  width: 100rem;
+  height: 100rem;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.item {
+  width: 40rem;
+  align-items: center;
+  background-color: white;
+  padding: 1rem;
+  border-bottom-width: 2px;
+  border-bottom-color: black;
+}
+.anchor {
+  align-items: center;
+  justify-content: center;
+  & > p {
+    margin-left: 5rem;
+  }
+}
+.image {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: black;
+}
+.listRank {
+  width: 10rem;
+  height: 10rem;
+}
