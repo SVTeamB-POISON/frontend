@@ -28,7 +28,15 @@ export default function ResultPage() {
           <h1>위험해요!</h1>
           <p>독초일 수 있어요!</p>
         </div>
-        <ul className={styles.resultContainer}>
+        <ul
+          className={`${
+            data.length === 3
+              ? styles.resultContainer3
+              : data.length === 2
+              ? styles.resultContainer2
+              : styles.resultContainer1
+          }`}
+        >
           {data?.map((result, idx) => (
             <ResultCard key={idx} result={result} />
           ))}
