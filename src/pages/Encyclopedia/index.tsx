@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 type LocationState = {
   flowerName: string;
 } | null;
-
+// TODO: 검색 결과 즉시 반영
 export default function EncyclopediaPage() {
   const location = useLocation();
   const flowerName = (location.state as LocationState)?.flowerName || null;
@@ -83,7 +83,6 @@ export default function EncyclopediaPage() {
           transition: { delay: 0.3, duration: 0.8 },
         }}
       >
-        {(isFetching || searchIsFetching) && <Loading />}
         {isSearch ? (
           <InfiniteScroll
             loadMore={() => searchFetchNextPage()}
@@ -96,6 +95,7 @@ export default function EncyclopediaPage() {
                 ));
               })}
             </ul>
+            {(isFetching || searchIsFetching) && <Loading isInfinite={true} />}
           </InfiniteScroll>
         ) : (
           <InfiniteScroll
@@ -109,6 +109,7 @@ export default function EncyclopediaPage() {
                 ));
               })}
             </ul>
+            {(isFetching || searchIsFetching) && <Loading isInfinite={true} />}
           </InfiniteScroll>
         )}
       </motion.div>
