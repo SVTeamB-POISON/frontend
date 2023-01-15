@@ -2,31 +2,13 @@ import styles from "./styles.module.scss";
 import logo from "@/assets/logo.svg";
 import search from "@/assets/search.svg";
 import { useNavigate } from "react-router-dom";
-import useInput from "@/hooks/useInput";
-import { useQuery } from "@tanstack/react-query";
-import { restFetcher } from "@/queryClient";
-import { EncyData } from "@/types/ency";
+import useSearchFlower from "@/hooks/useSearchFlower";
 
 export default function NavigationBar() {
-  const [flowerName, handleFlowerName, setFlowerName] = useInput("");
+  const [flowerName, handleFlowerName, goToEncy, onKeyDown] =
+    useSearchFlower("");
   const navigate = useNavigate();
   const goToHome = () => navigate("/");
-  const goToEncy = async () => {
-    navigate("/encyclopedia", {
-      state: { flowerName },
-    });
-    setFlowerName("");
-  };
-  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (
-      e.key === "Enter" &&
-      !e.shiftKey &&
-      e.nativeEvent.isComposing === false
-    ) {
-      e.preventDefault();
-      goToEncy();
-    }
-  };
   return (
     <div className={`flex flex-col ${styles.container}`}>
       <div className={`flex flex-row justify-between ${styles.searchSection}`}>

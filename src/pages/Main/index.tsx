@@ -15,6 +15,7 @@ import { restFetcher } from "@/queryClient";
 import Loading from "@/components/Loading";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import useSearchFlower from "@/hooks/useSearchFlower";
 
 interface FileType extends File {
   preview: string;
@@ -94,6 +95,8 @@ function Content({
   getRootProps,
   getInputProps,
 }: ContentProps) {
+  const [flowerName, handleFlowerName, goToEncy, onKeyDown] =
+    useSearchFlower("");
   return (
     <div className={styles.content}>
       <LogoTitle />
@@ -109,8 +112,15 @@ function Content({
         <input
           className={`flex border-blue-600  ${styles.searchInput}`}
           placeholder="Type in the Flower Name"
+          onChange={handleFlowerName}
+          onKeyDown={onKeyDown}
+          value={flowerName}
         />
-        <button className={`${styles.searchbtn} bg-white`}>
+        <button
+          type="submit"
+          className={`${styles.searchbtn} bg-white`}
+          onClick={goToEncy}
+        >
           <img src={searchIcon} />
         </button>
       </motion.div>
