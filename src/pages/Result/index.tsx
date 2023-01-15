@@ -5,7 +5,7 @@ import DetailModal from "@/components/DetailModal";
 import { ResultData } from "@/types/result";
 import { DetailData } from "@/types/detail";
 import { motion } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 import { QueryKeys, restFetcher } from "@/queryClient";
 import { useQueries, useQuery } from "@tanstack/react-query";
@@ -13,14 +13,23 @@ import Loading from "@/components/Loading";
 
 type RouterState = {
   data: ResultData[];
-};
+} | null;
 
 export default function ResultPage() {
   const location = useLocation();
-  // ResultCard에 onClick 함수랑 setState 함수 props로 전달해주기
-  const resultdata = (location.state as RouterState).data; // 결과창 3개 들어가는거
+  const navigate = useNavigate();
+  const resultData = (location.state as RouterState)?.data;
+  const hasPoison = Boolean(
+    resultData?.filter((result) => result.poison).length,
+  );
+  useEffect(() => {
+    if (resultData === undefined) {
+      navigate("/");
+    }
+  }, []);
+
   const details = useQueries({
-    queries: resultdata.map((data) => {
+    queries: resultData!.map((data) => {
       return {
         queryKey: [data.name],
         queryFn: () =>
@@ -68,11 +77,28 @@ export default function ResultPage() {
         }}
       >
         <div className={`flex flex-col  ${styles.textContainer}`}>
-          <h1>위험해요!</h1>
-          <p>독초일 수 있어요!</p>
+          {hasPoison ? (
+            <>
+              <h1>위험해요!</h1>
+              <p>독초일 수 있어요!</p>
+            </>
+          ) : (
+            <>
+              <h1>안전해요!</h1>
+              <p>독성이 없습니다!</p>
+            </>
+          )}
         </div>
-        <ul className={styles.resultContainer}>
-          {resultdata?.map((result, idx) => (
+        <ul
+          className={`${
+            resultData?.length === 3
+              ? styles.resultContainer3
+              : resultData?.length === 2
+              ? styles.resultContainer2
+              : styles.resultContainer1
+          }`}
+        >
+          {resultData?.map((result, idx) => (
             <ResultCard
               key={idx}
               result={result}

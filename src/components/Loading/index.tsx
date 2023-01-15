@@ -1,9 +1,17 @@
 import logo from "@/assets/logo.svg";
 import styles from "./styles.module.scss";
 
-export default function Loading() {
+type LoadingProps = {
+  isInfinite?: boolean;
+  height?: string;
+};
+
+export default function Loading({ isInfinite, height }: LoadingProps) {
   return (
-    <div className={styles.container}>
+    <div
+      className={`${isInfinite ? styles.infiniteContainer : styles.container}`}
+      style={height ? { height } : {}}
+    >
       <img className={styles.logo} src={logo} />
     </div>
   );

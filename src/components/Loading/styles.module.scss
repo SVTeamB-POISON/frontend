@@ -15,7 +15,13 @@
   justify-content: center;
   align-items: center;
 }
+.infiniteContainer {
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .logo {
-  height: 150px;
+  height: 10rem;
   animation: spin 1.5s ease-out infinite;
 }
