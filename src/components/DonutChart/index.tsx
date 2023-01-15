@@ -33,7 +33,7 @@ export default function DonutChart({ percent, poision }: DonutChartProps) {
           strokeDashoffset={2 * Math.PI * 90 * 0.25}
         />
       </svg>
-      <span className={styles.percent}>{percent * 100}%</span>
+      <span className={styles.percent}>{Math.floor(percent * 1000) / 10}%</span>
     </div>
   );
 }

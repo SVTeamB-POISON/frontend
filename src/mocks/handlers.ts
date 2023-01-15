@@ -21,7 +21,7 @@ const result: ResultData[] = [
     symptom: null,
     scientific_name: "Polygonatum odoratum var. pluriflorum",
     flower_language: "고귀한 희생",
-    acc: 34.2,
+    acc: 3.5,
   },
   {
     name: "데이지",
@@ -228,13 +228,13 @@ export const handlers = [
     const page = req.url.searchParams.get("page");
     const name = req.url.searchParams.get("name");
     if (name && name !== "") {
-      return res(ctx.status(200), ctx.json(encySearch));
+      return res(ctx.status(200), ctx.delay(500), ctx.json(encySearch));
     } else if (!name && (page === "1" || page === null)) {
-      return res(ctx.status(200), ctx.json(encyPage1));
+      return res(ctx.status(200), ctx.delay(500), ctx.json(encyPage1));
     } else if (!name && page === "2") {
-      return res(ctx.status(200), ctx.json(encyPage2));
+      return res(ctx.status(200), ctx.delay(500), ctx.json(encyPage2));
     } else if (!name && page === "3") {
-      return res(ctx.status(200), ctx.json(encyPage3));
+      return res(ctx.status(200), ctx.delay(500), ctx.json(encyPage3));
     }
   }),
   rest.post("/api/flowers/image", (req, res, ctx) => {

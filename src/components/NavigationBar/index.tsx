@@ -17,6 +17,16 @@ export default function NavigationBar() {
     });
     setFlowerName("");
   };
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (
+      e.key === "Enter" &&
+      !e.shiftKey &&
+      e.nativeEvent.isComposing === false
+    ) {
+      e.preventDefault();
+      goToEncy();
+    }
+  };
   return (
     <div className={`flex flex-col ${styles.container}`}>
       <div className={`flex flex-row justify-between ${styles.searchSection}`}>
@@ -29,6 +39,7 @@ export default function NavigationBar() {
             className={`flex ${styles.searchInput}`}
             placeholder="Type in the Flower Name"
             onChange={handleFlowerName}
+            onKeyDown={onKeyDown}
             value={flowerName}
           />
           <button

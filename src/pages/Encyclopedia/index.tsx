@@ -42,8 +42,9 @@ export default function EncyclopediaPage() {
     isLoading: searchIsLoading,
     isFetching: searchIsFetching,
     isError: searchIsError,
+    refetch: searchRefetch,
   } = useInfiniteQuery<EncyResponse, Error>(
-    ["search"],
+    [QueryKeys.SEARCH],
     ({ pageParam = `/flowers?name=${flowerName}` }) =>
       restFetcher({
         method: "GET",
@@ -51,10 +52,15 @@ export default function EncyclopediaPage() {
       }),
     {
       getNextPageParam: (lastPage) => lastPage.nextPage || undefined,
+      staleTime: 0,
+      cacheTime: 0,
     },
   );
   useEffect(() => {
-    if (flowerName) setIsSearch(true);
+    if (flowerName) {
+      setIsSearch(true);
+      searchRefetch();
+    }
     if (!flowerName) setIsSearch(false);
   }, [flowerName]);
   if (isLoading || searchIsLoading) return <Loading />;
@@ -83,20 +89,24 @@ export default function EncyclopediaPage() {
           transition: { delay: 0.3, duration: 0.8 },
         }}
       >
-        {(isFetching || searchIsFetching) && <Loading />}
         {isSearch ? (
-          <InfiniteScroll
-            loadMore={() => searchFetchNextPage()}
-            hasMore={searchHasNextPage}
-          >
-            <ul className={styles.cardList}>
-              {searchData.pages.map((pageData) => {
-                return pageData.data.map((result, idx) => (
-                  <FlowerCard key={idx} list={result} />
-                ));
-              })}
-            </ul>
-          </InfiniteScroll>
+          searchIsFetching ? (
+            <Loading height="20rem" />
+          ) : (
+            <InfiniteScroll
+              loadMore={() => searchFetchNextPage()}
+              hasMore={searchHasNextPage}
+            >
+              <ul className={styles.cardList}>
+                {searchData.pages.map((pageData) => {
+                  return pageData.data.map((result, idx) => (
+                    <FlowerCard key={idx} list={result} />
+                  ));
+                })}
+              </ul>
+              {searchIsFetching && <Loading isInfinite={true} />}
+            </InfiniteScroll>
+          )
         ) : (
           <InfiniteScroll
             loadMore={() => fetchNextPage()}
@@ -109,6 +119,7 @@ export default function EncyclopediaPage() {
                 ));
               })}
             </ul>
+            {isFetching && <Loading isInfinite={true} />}
           </InfiniteScroll>
         )}
       </motion.div>
