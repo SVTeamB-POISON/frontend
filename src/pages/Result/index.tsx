@@ -2,16 +2,24 @@ import NavigationBar from "@/components/NavigationBar";
 import ResultCard from "@/components/ResultCard";
 import { ResultData } from "@/types/result";
 import { motion } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 
 type RouterState = {
   data: ResultData[];
-};
+} | null;
 
 export default function ResultPage() {
   const location = useLocation();
-  const data = (location.state as RouterState).data;
+  const navigate = useNavigate();
+  const data = (location.state as RouterState)?.data;
+  const hasPoison = Boolean(data?.filter((result) => result.poison).length);
+  useEffect(() => {
+    if (data === undefined) {
+      navigate("/");
+    }
+  }, []);
   return (
     <div className={styles.container}>
       <NavigationBar />
@@ -25,14 +33,23 @@ export default function ResultPage() {
         }}
       >
         <div className={`flex flex-col  ${styles.textContainer}`}>
-          <h1>위험해요!</h1>
-          <p>독초일 수 있어요!</p>
+          {hasPoison ? (
+            <>
+              <h1>위험해요!</h1>
+              <p>독초일 수 있어요!</p>
+            </>
+          ) : (
+            <>
+              <h1>안전해요!</h1>
+              <p>독성이 없습니다!</p>
+            </>
+          )}
         </div>
         <ul
           className={`${
-            data.length === 3
+            data?.length === 3
               ? styles.resultContainer3
-              : data.length === 2
+              : data?.length === 2
               ? styles.resultContainer2
               : styles.resultContainer1
           }`}
