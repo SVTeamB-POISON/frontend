@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 type LocationState = {
   flowerName: string;
 } | null;
-// TODO: 검색 결과 즉시 반영
+
 export default function EncyclopediaPage() {
   const location = useLocation();
   const flowerName = (location.state as LocationState)?.flowerName || null;
@@ -42,8 +42,9 @@ export default function EncyclopediaPage() {
     isLoading: searchIsLoading,
     isFetching: searchIsFetching,
     isError: searchIsError,
+    refetch: searchRefetch,
   } = useInfiniteQuery<EncyResponse, Error>(
-    ["search"],
+    [QueryKeys.SEARCH],
     ({ pageParam = `/flowers?name=${flowerName}` }) =>
       restFetcher({
         method: "GET",
@@ -51,10 +52,15 @@ export default function EncyclopediaPage() {
       }),
     {
       getNextPageParam: (lastPage) => lastPage.nextPage || undefined,
+      staleTime: 0,
+      cacheTime: 0,
     },
   );
   useEffect(() => {
-    if (flowerName) setIsSearch(true);
+    if (flowerName) {
+      setIsSearch(true);
+      searchRefetch();
+    }
     if (!flowerName) setIsSearch(false);
   }, [flowerName]);
   if (isLoading || searchIsLoading) return <Loading />;
@@ -84,19 +90,23 @@ export default function EncyclopediaPage() {
         }}
       >
         {isSearch ? (
-          <InfiniteScroll
-            loadMore={() => searchFetchNextPage()}
-            hasMore={searchHasNextPage}
-          >
-            <ul className={styles.cardList}>
-              {searchData.pages.map((pageData) => {
-                return pageData.data.map((result, idx) => (
-                  <FlowerCard key={idx} list={result} />
-                ));
-              })}
-            </ul>
-            {(isFetching || searchIsFetching) && <Loading isInfinite={true} />}
-          </InfiniteScroll>
+          searchIsFetching ? (
+            <Loading height="20rem" />
+          ) : (
+            <InfiniteScroll
+              loadMore={() => searchFetchNextPage()}
+              hasMore={searchHasNextPage}
+            >
+              <ul className={styles.cardList}>
+                {searchData.pages.map((pageData) => {
+                  return pageData.data.map((result, idx) => (
+                    <FlowerCard key={idx} list={result} />
+                  ));
+                })}
+              </ul>
+              {searchIsFetching && <Loading isInfinite={true} />}
+            </InfiniteScroll>
+          )
         ) : (
           <InfiniteScroll
             loadMore={() => fetchNextPage()}
@@ -109,7 +119,7 @@ export default function EncyclopediaPage() {
                 ));
               })}
             </ul>
-            {(isFetching || searchIsFetching) && <Loading isInfinite={true} />}
+            {isFetching && <Loading isInfinite={true} />}
           </InfiniteScroll>
         )}
       </motion.div>
