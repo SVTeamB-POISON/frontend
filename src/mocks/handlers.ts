@@ -21,7 +21,7 @@ const result: ResultData[] = [
     symptom: null,
     scientific_name: "Polygonatum odoratum var. pluriflorum",
     flower_language: "고귀한 희생",
-    acc: 34.2,
+    acc: 3.5,
   },
   {
     name: "데이지",
