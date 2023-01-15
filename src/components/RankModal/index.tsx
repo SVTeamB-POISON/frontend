@@ -1,66 +1,29 @@
 import styles from "./styles.module.scss";
 import image1 from "@/assets/image1.svg";
 import firstPlace from "@/assets/firstPlace.svg";
-export default function RankModal() {
+import RankList from "../RankList";
+import { Rank } from "@/types/rank";
+import RankTop from "../RankTop";
+
+type RankData = {
+  rankData: Rank[];
+};
+
+export default function RankModal({ rankData }: RankData) {
   return (
-    <div className={`drop-shadow-2xl ${styles.container}`}>
+    <div className={`drop-shadow-2xl flex flex-col ${styles.container}`}>
+      <img className={styles.crown} src={firstPlace} />
       <div className={`flex flex-row ${styles.subContainer1}`}>
-        <div className={`flex flex-col ${styles.third}`}>
-          <img className={`${styles.image}`} src={image1} />
-          <hr className={styles.line} />
-          <div className={`flex flex-row ${styles.labelContainer}`}>
-            <p>꽃이름</p>
-            <p>1200회</p>
-          </div>
-        </div>
-        <div className={`flex flex-col ${styles.first}`}>
-          <img src={firstPlace} className={styles.firstCrown} />
-          <img className={`${styles.image}`} src={image1} />
-          <hr className={styles.line} />
-          <div className={`flex flex-row ${styles.labelContainer}`}>
-            <p>꽃이름</p>
-            <p>1200회</p>
-          </div>
-        </div>
-        <div className={`flex flex-col ${styles.second}`}>
-          <img className={`${styles.image}`} src={image1} />
-          <hr className={styles.line} />
-          <div className={`flex flex-row ${styles.labelContainer}`}>
-            <p>꽃이름</p>
-            <p>1200회</p>
-          </div>
-        </div>
+        {rankData?.map((result, idx) =>
+          idx <= 2 ? <RankTop key={idx} result={result} index={idx} /> : null,
+        )}
       </div>
-      <div className={styles.subContainer2}>
-        <div className={`flex flex-col ${styles.listRank}`}>
-          <div className={`flex flex-col ${styles.item}`}>
-            <a className={`flex flex-row ${styles.anchor}`} href="/Detail">
-              <img className={`${styles.image}`} src={image1} />
-              <p>순위</p>
-              <p>이름</p>
-              <p>2000회</p>
-            </a>
-            <hr className={styles.line2} />
-          </div>
-          <div className={`flex flex-col ${styles.item}`}>
-            <a className={`flex flex-row ${styles.anchor}`} href="/Detail">
-              <img className={`${styles.image}`} src={image1} />
-              <p>순위</p>
-              <p>이름</p>
-              <p>2000회</p>
-            </a>
-            <hr className={styles.line2} />
-          </div>
-          <div className={`flex flex-col ${styles.item}`}>
-            <a className={`flex flex-row ${styles.anchor}`} href="/Detail">
-              <img className={`${styles.image}`} src={image1} />
-              <p>순위</p>
-              <p>이름</p>
-              <p>2000회</p>
-            </a>
-            <hr className={styles.line2} />
-          </div>
-        </div>
+      <div className={`flex flex-col ${styles.subContainer2}`}>
+        {rankData?.map((result, idx) =>
+          idx > 2 ? (
+            <RankList key={idx} result={result} index={idx} /> // <RankList key={idx} result={result} />
+          ) : null,
+        )}
       </div>
     </div>
   );

@@ -169,7 +169,7 @@ export const handlers = [
     return res(ctx.status(200), ctx.delay(2000), ctx.json(result));
   }),
 
-  rest.post("/api/flowers/hour-ranking", (req, res, ctx) => {
+  rest.get("/api/flowers/hour-ranking", (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(rank));
   }),
 ];
