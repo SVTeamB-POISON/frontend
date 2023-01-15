@@ -1,14 +1,38 @@
 @import "@/media.scss";
 
-.container {
+@keyframes modal-show {
+  from {
+    opacity: 0;
+    margin-top: -50px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+@keyframes modal-bg-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
   display: flex;
+  position: absolute;
   flex-direction: column;
   width: 85vw;
   height: 80vh;
+  top: 15%;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   cursor: pointer;
   padding: 3rem;
   border-radius: 20px 20px 20px 20px;
+  /* 팝업이 열릴때 스르륵 열리는 효과 */
+  animation: modal-show 0.3s;
+  overflow: hidden;
 }
 
 .summary {
@@ -42,6 +66,7 @@
   padding: 2rem;
   color: white;
 }
+
 .dataHeader {
   flex: 1;
   display: flex;
@@ -92,7 +117,6 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  overflow-y: scroll;
   & > p {
     color: white;
     word-break: break-all;
@@ -113,7 +137,6 @@
   right: 3rem;
   width: 3rem;
   height: 3rem;
-  background: #f99ee6;
   border-radius: 50%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
   & > img {
