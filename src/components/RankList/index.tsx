@@ -14,7 +14,7 @@ export default function RankList({ result, index }: RankData) {
     <div className={`flex flex-col ${styles.container}`}>
       <div className={`flex flex-row ${styles.labelContainer}`}>
         <img className={`${styles.image}`} src={result.s3_url} />
-        <p>{index + 1}위</p>
+        <p>{index + 4}위</p>
         <p>{result.name}</p>
         <p>{result.count}회</p>
       </div>
