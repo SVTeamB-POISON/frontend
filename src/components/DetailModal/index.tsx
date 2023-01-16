@@ -28,10 +28,8 @@ function DetailModal(props: DetailModalProps) {
           />
           <div className={styles.simpleDesc}>
             <div className={styles.dataHeader}>
-              <h1 className={styles.dataName}>{detail.name}</h1>
-              <h1 className={styles.dataToxic}>
-                독성 여부: {detail.poison ? "독초" : "없음"}
-              </h1>
+              <h1>{detail.name}</h1>
+              <h2>독성 여부: {detail.poison ? "독초" : "없음"}</h2>
               <div className={styles.dataDesc}>
                 {detail.poison && <p>중독 시 증상: {detail.symptom}</p>}
                 <p>학명: {detail.scientific_name}</p>

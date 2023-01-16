@@ -21,11 +21,9 @@
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100vw;
-  min-height: calc(100vh - 85px);
+  height: calc(100vh - 85px);
   margin-top: 85px;
-  overflow: scroll;
   background: var(--background-color);
 }
 

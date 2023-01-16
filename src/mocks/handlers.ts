@@ -12,7 +12,8 @@ const result: ResultData[] = [
     poison: true,
     symptom: "물집, 질식, 호흡곤란 등", // poision이 true면 있고 false면 없음
     scientific_name: "Pulsatilla koreana",
-    flower_language: "공경, 충성, 사랑의 배신, 슬픈 추억",
+    flower_language:
+      "공경, 충성, 사랑의 배신, 슬픈 추억공경, 충성, 사랑의 배신, 슬픈 추억공경, 충성, 사랑의 배신, 슬픈 추억공경, 충성, 사랑의 배신, 슬픈 추억",
     acc: 94.5,
   },
   {

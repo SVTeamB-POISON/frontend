@@ -4,15 +4,14 @@ import logo from "@/assets/logo.svg";
 
 type FlowerCardProps = {
   list: EncyData;
+  onCardClick: (name: string) => void;
 };
 
-export default function FlowerCard({ list }: FlowerCardProps) {
+export default function FlowerCard({ list, onCardClick }: FlowerCardProps) {
   return (
     <div
       className={styles.flowerContainer}
-      onClick={() => {
-        console.log(list.name);
-      }}
+      onClick={() => onCardClick!(list.name)}
     >
       <div
         className={`m-2 drop-shadow-xl ${styles.imgContainer}`}
