@@ -36,6 +36,7 @@
   animation: modal-show 0.3s;
   overflow: hidden;
   z-index: 500;
+  overflow-y: scroll;
 }
 
 .summary {
@@ -83,8 +84,12 @@
   align-items: flex-start;
   float: left;
   & > h1 {
-    font-size: 2.1rem;
+    font-size: 3rem;
     font-weight: 900;
+  }
+  & > h2 {
+    font-size: 2.1rem;
+    font-weight: 700;
   }
   @include desktop {
     float: left;
@@ -109,8 +114,8 @@
     word-break: break-all;
     white-space: pre-line;
     text-align: justify;
-    font-size: 1.2rem;
-    line-height: 2.1rem;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
   }
 }
 
@@ -125,8 +130,8 @@
     word-break: break-all;
     white-space: pre-line;
     text-align: justify;
-    font-size: 1.2rem;
-    line-height: 2.1rem;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
   }
   @include tablet {
     padding-top: 3rem;
