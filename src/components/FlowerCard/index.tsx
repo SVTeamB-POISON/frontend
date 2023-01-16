@@ -4,7 +4,7 @@ import logo from "@/assets/logo.svg";
 
 type FlowerCardProps = {
   list: EncyData;
-  onCardClick?: (name: string) => void;
+  onCardClick: (name: string) => void;
 };
 
 export default function FlowerCard({ list, onCardClick }: FlowerCardProps) {

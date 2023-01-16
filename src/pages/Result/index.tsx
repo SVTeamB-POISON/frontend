@@ -7,7 +7,7 @@ import { DetailData } from "@/types/detail";
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
-import { restFetcher } from "@/queryClient";
+import { QueryKeys, restFetcher } from "@/queryClient";
 import { useQueries } from "@tanstack/react-query";
 
 type RouterState = {
@@ -27,7 +27,7 @@ export default function ResultPage() {
       ? {
           queries: resultData.map((data) => {
             return {
-              queryKey: [data.name],
+              queryKey: [QueryKeys.DETAIL, data.name],
               queryFn: () =>
                 restFetcher({
                   method: "GET",
