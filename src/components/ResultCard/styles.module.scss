@@ -16,6 +16,11 @@
     width: 24rem;
     height: 29.6rem;
   }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
 .imageSection {
   position: relative;
@@ -57,7 +62,13 @@
   padding-top: 1rem;
   color: white;
   overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
+.dataSection::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
 .dataHeader {
   display: flex;
   justify-content: space-between;
