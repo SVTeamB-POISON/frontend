@@ -109,9 +109,11 @@ export default function ResultPage() {
       </motion.div>
 
       {modalOpen && (
-        <DetailModal close={closeModal} detail={modalData!}>
-          children
-        </DetailModal>
+        <div className={styles.modalOverlay}>
+          <DetailModal close={closeModal} detail={modalData!}>
+            children
+          </DetailModal>
+        </div>
       )}
     </div>
   );
