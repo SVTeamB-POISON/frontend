@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavigationBar from "@/components/NavigationBar";
 import ResultCard from "@/components/ResultCard";
 import DetailModal from "@/components/DetailModal";
@@ -7,9 +7,8 @@ import { DetailData } from "@/types/detail";
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
-import { QueryKeys, restFetcher } from "@/queryClient";
-import { useQueries, useQuery } from "@tanstack/react-query";
-import Loading from "@/components/Loading";
+import { restFetcher } from "@/queryClient";
+import { useQueries } from "@tanstack/react-query";
 
 type RouterState = {
   data: ResultData[];
@@ -54,14 +53,19 @@ export default function ResultPage() {
   // onClick 함수로 openModal 선언
   const openModal = (name: string) => {
     setModalOpen(true);
-    document.body.style.overflow = "hidden";
     const data = onFilterDetail(name);
     setModalData(data);
   };
 
-  const closeModal = () => {
-    setModalOpen(false);
-    document.body.style.overflow = "unset";
+  const closeModal = (e: React.SyntheticEvent) => {
+    if (!(e.target instanceof HTMLElement)) return;
+    if (
+      e.target.id === "overlay" ||
+      e.target.id === "close" ||
+      e.target.id === "closeImg"
+    ) {
+      setModalOpen(false);
+    }
   };
 
   return (
@@ -109,7 +113,7 @@ export default function ResultPage() {
       </motion.div>
 
       {modalOpen && (
-        <div className={styles.modalOverlay}>
+        <div className={styles.modalOverlay} id="overlay" onClick={closeModal}>
           <DetailModal close={closeModal} detail={modalData!}>
             children
           </DetailModal>

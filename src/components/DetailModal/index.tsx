@@ -4,7 +4,7 @@ import icon_x from "@/assets/icon_x.png";
 import { DetailData } from "@/types/detail";
 
 type DetailModalProps = {
-  close: () => void;
+  close: (e: React.SyntheticEvent) => void;
   children: React.ReactNode;
   detail: DetailData;
 };
@@ -42,10 +42,11 @@ function DetailModal(props: DetailModalProps) {
         </div>
         <div
           className={styles.closeButton}
+          id="close"
           onClick={close}
           style={{ backgroundColor: detail.poison ? "#f99ee6" : "#8DC36C" }}
         >
-          <img src={icon_x} alt="closebutton" />
+          <img src={icon_x} id="closeImg" alt="closebutton" />
         </div>
         <div className={styles.detailDesc}>
           <p>{detail.detail}</p>
