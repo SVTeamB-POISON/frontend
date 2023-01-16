@@ -14,6 +14,10 @@ type RouterState = {
   data: ResultData[];
 } | null;
 
+type RouterState = {
+  data: ResultData[];
+};
+
 export default function ResultPage() {
   const location = useLocation();
   const navigate = useNavigate();
