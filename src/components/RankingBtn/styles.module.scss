@@ -1,0 +1,42 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outerCrown {
+  width: 8rem;
+  height: 8rem;
+}
+.rankBtn {
+  position: absolute;
+  padding-top: 0.5rem;
+  padding-left: 0.4rem;
+  cursor: pointer;
+  &:hover {
+    animation: rotate 1s cubic-bezier(0, 0, 1, 0.7) infinite;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(-15deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(-15deg);
+  }
+}
+.btnimage {
+  width: 5rem;
+  height: 5rem;
+}

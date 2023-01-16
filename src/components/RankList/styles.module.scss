@@ -1,0 +1,28 @@
+.container {
+  align-items: center;
+  justify-items: center;
+  gap: 1rem;
+}
+
+.image {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: black;
+}
+
+.labelContainer {
+  display: flex;
+  align-items: center;
+  & > p {
+    margin: 2rem;
+    font-size: 1rem;
+    color: white;
+  }
+}
+.line {
+  width: 20rem;
+  height: 10px;
+  background-color: whi;
+}

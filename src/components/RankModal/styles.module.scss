@@ -1,0 +1,63 @@
+@keyframes modal-show {
+  from {
+    opacity: 0;
+    margin-top: -50px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+@keyframes modal-bg-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.container {
+  width: 35rem;
+  height: 45rem;
+  border-width: 20px;
+  border-color: black;
+  border-radius: 20px;
+  position: absolute;
+  top: 7.5%;
+  padding: 3rem;
+  background-color: #5c79cf;
+  padding-top: 4rem;
+  align-items: center;
+  animation: modal-show 0.3s;
+  z-index: 500;
+}
+.subContainer1 {
+  width: 35rem;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  margin-top: 3rem;
+  & > div:nth-child(2) {
+    transform: translateY(-3rem);
+  }
+}
+.crown {
+  position: absolute;
+  width: 7rem;
+  height: 7rem;
+  top: 0rem;
+}
+
+.subContainer2 {
+  width: 35rem;
+  margin-top: 2rem;
+}
+.item {
+  width: 35rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+  border-bottom-width: 2px;
+  border-bottom-color: black;
+}

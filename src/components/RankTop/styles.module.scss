@@ -1,0 +1,32 @@
+.container {
+  align-items: center;
+  justify-items: center;
+}
+
+.rank {
+  font-size: 2rem;
+  color: white;
+}
+
+.image {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: black;
+  margin-bottom: 1rem;
+}
+
+.labelContainer {
+  display: flex;
+  gap: 2rem;
+  & > p {
+    color: white;
+    font-size: 1.3rem;
+  }
+}
+.line {
+  width: 7rem;
+  height: 1px;
+  background-color: white;
+}
