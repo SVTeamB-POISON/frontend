@@ -4,7 +4,6 @@ import GlobalLayout from "@/pages/_layout";
 const MainPage = lazy(() => import("@/pages/Main"));
 const ResultPage = lazy(() => import("@/pages/Result"));
 const EncyclopediaPage = lazy(() => import("@/pages/Encyclopedia"));
-const DetailPage = lazy(() => import("@/pages/Detail"));
 
 export const routes = [
   {
@@ -14,7 +13,6 @@ export const routes = [
       { path: "/", element: <MainPage /> },
       { path: "/result", element: <ResultPage /> },
       { path: "/encyclopedia", element: <EncyclopediaPage /> },
-      { path: "/detail", element: <DetailPage /> },
     ],
   },
 ];
