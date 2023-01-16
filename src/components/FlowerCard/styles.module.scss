@@ -5,7 +5,9 @@
   height: 18rem;
   border-radius: 20px;
   cursor: pointer;
+  transition: 0.2s ease-in;
   &:hover {
+    transform: scale(1.03);
     opacity: 0.8;
   }
   @include tablet {
