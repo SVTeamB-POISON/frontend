@@ -2,7 +2,7 @@
 
 .container {
   width: 100vw;
-  height: calc(100vh - 85px);
+  min-height: calc(100vh - 85px);
   background-color: var(--background-color);
   margin-top: 85px;
 }
