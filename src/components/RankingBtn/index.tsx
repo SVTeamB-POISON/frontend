@@ -6,16 +6,16 @@ import { Rank } from "@/types/rank";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
-export default function RankingBtn() {
+type RankBtnProps = {
+  onClick: () => void;
+};
+
+export default function RankingBtn({ onClick }: RankBtnProps) {
   //랭킹모달 수정
-  const [isfocus, setisFocus] = useState(false);
-  const onFocus = () => {
-    setisFocus(true);
-  };
   return (
     <div className={styles.container}>
       <img className={styles.outerCrown} src={outerCrown} />
-      <button className={`${styles.rankBtn}`} onClick={onFocus}>
+      <button className={`${styles.rankBtn}`} onClick={onClick}>
         <img src={crown} className={styles.btnimage} />
       </button>
     </div>

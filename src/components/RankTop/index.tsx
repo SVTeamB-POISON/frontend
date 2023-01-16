@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import styles from "./styles.module.scss";
 import { Rank } from "@/types/rank";
 

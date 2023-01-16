@@ -12,8 +12,6 @@ type RankData = {
 //
 
 export default function RankModal({ rankData, underRank }: RankData) {
-  console.log("rankData", rankData);
-  console.log("under", underRank);
   return (
     <div className={`drop-shadow-2xl flex flex-col ${styles.container}`}>
       <img className={styles.crown} src={firstPlace} />

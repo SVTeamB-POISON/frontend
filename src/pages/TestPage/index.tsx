@@ -24,8 +24,7 @@ export default function Test() {
   }, [data]);
   //const sortedList = data?.sort((a, b) => b.count - a.count);
   //const underRank = data?.splice(3, 3);
-  console.log("top", data);
-  console.log("low", underRank);
+
   return (
     <div className={styles.container}>
       <div className={styles.subContainer}>
