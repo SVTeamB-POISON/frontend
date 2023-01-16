@@ -201,6 +201,17 @@ const detail: DetailData[] = [
     detail:
       "수국은 수국과의 갈잎떨기나무이며, 초 여름에서 무더운 여름 중순까지 피는 꽃이다.\n 본래는 중국 원산이지만, 현재 중국에서는 자생군락이 발견되지 않으며, 일본에서 품종 개량이 많이 되었다. 만화경, 미카의 물떼새 등 특이한 이름으로 판매 중.\n 시중에서 파는 수국보다 꽤 비싸지만 정말 풍성하고 아름다운 꽃이 피어 일본 수국은 항상 인기가 많다.",
   },
+  {
+    id: 6,
+    name: "데이지",
+    s3_url:
+      "https://cdn.crowdpic.net/detail-thumb/thumb_d_58F053194EB94368129687F3BDBF8D86.jpg",
+    poison: false,
+    scientific_name: "Hydrangea macrophylla",
+    flower_language: "진심, 변덕, 소녀의 꿈",
+    detail:
+      "수국은 수국과의 갈잎떨기나무이며, 초 여름에서 무더운 여름 중순까지 피는 꽃이다.\n 본래는 중국 원산이지만, 현재 중국에서는 자생군락이 발견되지 않으며, 일본에서 품종 개량이 많이 되었다. 만화경, 미카의 물떼새 등 특이한 이름으로 판매 중.\n 시중에서 파는 수국보다 꽤 비싸지만 정말 풍성하고 아름다운 꽃이 피어 일본 수국은 항상 인기가 많다.",
+  },
 ];
 
 export const handlers = [
@@ -210,6 +221,9 @@ export const handlers = [
   }),
   rest.get("/api/result", (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(result));
+  }),
+  rest.post("/api/flowers/image", (req, res, ctx) => {
+    return res(ctx.status(200), ctx.delay(2000), ctx.json(result));
   }),
   rest.get("/api/flowers/details", (req, res, ctx) => {
     const name = req.url.searchParams.get("name"); // QueryParameter로 name 추출
@@ -237,7 +251,8 @@ export const handlers = [
       return res(ctx.status(200), ctx.delay(500), ctx.json(encyPage3));
     }
   }),
-  rest.post("/api/flowers/image", (req, res, ctx) => {
+  rest.post("/api/flowers/image", async (req, res, ctx) => {
+    const { id } = await req.json();
     return res(ctx.status(200), ctx.delay(2000), ctx.json(result));
   }),
 ];
