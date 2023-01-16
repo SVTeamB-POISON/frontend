@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import { QueryKeys, restFetcher } from "@/queryClient";
-import { EncyData, EncyResponse } from "@/types/ency";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { EncyResponse } from "@/types/ency";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import FlowerCard from "@/components/FlowerCard";
 import NavigationBar from "@/components/NavigationBar";
 import { motion } from "framer-motion";
@@ -9,6 +9,8 @@ import InfiniteScroll from "react-infinite-scroller";
 import Loading from "@/components/Loading";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { DetailData } from "@/types/detail";
+import DetailModal from "@/components/DetailModal";
 
 type LocationState = {
   flowerName: string;
@@ -17,7 +19,10 @@ type LocationState = {
 export default function EncyclopediaPage() {
   const location = useLocation();
   const flowerName = (location.state as LocationState)?.flowerName || null;
+  const [detailName, setDetailName] = useState<string | null>();
   const [isSearch, setIsSearch] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+
   const {
     data,
     fetchNextPage,
@@ -56,6 +61,40 @@ export default function EncyclopediaPage() {
       cacheTime: 0,
     },
   );
+
+  const {
+    data: detail,
+    refetch,
+    isLoading: isDetailLoading,
+  } = useQuery<DetailData>(
+    [QueryKeys.DETAIL, detailName],
+    () =>
+      restFetcher({
+        method: "GET",
+        path: "/flowers/details",
+        params: { name: detailName },
+      }),
+    {
+      enabled: !!detailName,
+    },
+  );
+  const onCardClick = (name: string) => {
+    setDetailName(name);
+    setModalOpen(true);
+  };
+  const closeModal = (e: React.SyntheticEvent) => {
+    if (!(e.target instanceof HTMLElement)) return;
+    if (
+      e.target.id === "overlay" ||
+      e.target.id === "close" ||
+      e.target.id === "closeImg"
+    ) {
+      setModalOpen(false);
+    }
+  };
+  useEffect(() => {
+    if (detailName) refetch();
+  }, [detailName]);
   useEffect(() => {
     if (flowerName) {
       setIsSearch(true);
@@ -66,7 +105,10 @@ export default function EncyclopediaPage() {
   if (isLoading || searchIsLoading) return <Loading />;
   if (isError || searchIsError) return <div>Error! {error?.toString()}</div>;
   return (
-    <div className={`flex flex-col ${styles.container}`}>
+    <div
+      className={`flex flex-col ${styles.container}`}
+      style={{ overflowY: modalOpen ? "hidden" : "auto" }}
+    >
       <NavigationBar />
       <motion.div
         className={`flex flex-col  ${styles.textContainer}`}
@@ -100,7 +142,11 @@ export default function EncyclopediaPage() {
               <ul className={styles.cardList}>
                 {searchData.pages.map((pageData) => {
                   return pageData.data.map((result, idx) => (
-                    <FlowerCard key={idx} list={result} />
+                    <FlowerCard
+                      onCardClick={onCardClick}
+                      key={idx}
+                      list={result}
+                    />
                   ));
                 })}
               </ul>
@@ -115,7 +161,11 @@ export default function EncyclopediaPage() {
             <ul className={styles.cardList}>
               {data.pages.map((pageData) => {
                 return pageData.data.map((result, idx) => (
-                  <FlowerCard key={idx} list={result} />
+                  <FlowerCard
+                    onCardClick={onCardClick}
+                    key={idx}
+                    list={result}
+                  />
                 ));
               })}
             </ul>
@@ -123,6 +173,13 @@ export default function EncyclopediaPage() {
           </InfiniteScroll>
         )}
       </motion.div>
+      {!isDetailLoading && modalOpen && (
+        <div className={styles.modalOverlay} id="overlay" onClick={closeModal}>
+          <DetailModal close={closeModal} detail={detail!}>
+            children
+          </DetailModal>
+        </div>
+      )}
     </div>
   );
 }

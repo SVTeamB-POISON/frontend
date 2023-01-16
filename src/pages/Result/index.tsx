@@ -21,26 +21,24 @@ export default function ResultPage() {
   const hasPoison = Boolean(
     resultData?.filter((result) => result.poison).length,
   );
-  useEffect(() => {
-    if (resultData === undefined) {
-      navigate("/");
-    }
-  }, []);
 
-  const details = useQueries({
-    queries: resultData!.map((data) => {
-      return {
-        queryKey: [data.name],
-        queryFn: () =>
-          restFetcher({
-            method: "GET",
-            path: "/flowers/details",
-            params: { name: data.name },
+  const details = useQueries(
+    resultData
+      ? {
+          queries: resultData.map((data) => {
+            return {
+              queryKey: [data.name],
+              queryFn: () =>
+                restFetcher({
+                  method: "GET",
+                  path: "/flowers/details",
+                  params: { name: data.name },
+                }),
+            };
           }),
-      };
-    }),
-  });
-
+        }
+      : { queries: [] },
+  );
   // useState를 사용하여 open 상태를 변경한다. (open일 때 true로 만들어 열리는 방식)
   const [modalOpen, setModalOpen] = useState(false);
   const [modalData, setModalData] = useState<DetailData>();
@@ -67,9 +65,16 @@ export default function ResultPage() {
       setModalOpen(false);
     }
   };
-
+  useEffect(() => {
+    if (resultData === undefined) {
+      navigate("/");
+    }
+  }, []);
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={{ overflowY: modalOpen ? "hidden" : "auto" }}
+    >
       <NavigationBar />
       <motion.div
         className={styles.content}
