@@ -1,10 +1,6 @@
 import styles from "./styles.module.scss";
 import crown from "@/assets/crown.svg";
-import outerCrown from "@/assets/outerCrown.svg";
-import { QueryKeys, restFetcher } from "@/queryClient";
-import { Rank } from "@/types/rank";
-import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import outerCrown from "@/assets/outercrown.svg";
 
 type RankBtnProps = {
   onClick: () => void;
