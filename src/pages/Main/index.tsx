@@ -18,6 +18,7 @@ import { motion } from "framer-motion";
 import RankingBtn from "@/components/RankingBtn";
 import RankModal from "@/components/RankModal";
 import { Rank } from "@/types/rank";
+import useSearchFlower from "@/hooks/useSearchFlower";
 
 interface FileType extends File {
   preview: string;
@@ -25,7 +26,7 @@ interface FileType extends File {
 
 export default function MainPage() {
   const { mutate, isLoading } = useMutation((formData: FormData) =>
-    restFetcher({ method: "POST", path: "/flowers/image", body: formData }),
+    restFetcher({ method: "POST", path: "/flowers/image/", body: formData }),
   );
   const navigate = useNavigate();
   const [files, setFiles] = useState<FileType[]>([]);
@@ -71,7 +72,7 @@ export default function MainPage() {
   );
 
   useEffect(() => {
-    if (!rankLoading && data?.length === 6) {
+    if (data?.length === 6) {
       setUnderRank(data?.splice(3, 3));
       [data[0], data[1]] = [data[1], data[0]];
     }
@@ -85,7 +86,6 @@ export default function MainPage() {
     if (!(e.target instanceof HTMLElement)) return;
     if (e.target.id === "rankOverLay") setrankOpen(false);
   };
-  console.log("under", underRank);
   return (
     <div className={styles.container}>
       <div className={styles.rankBtnContainer}>
@@ -139,6 +139,8 @@ function Content({
   getRootProps,
   getInputProps,
 }: ContentProps) {
+  const [flowerName, handleFlowerName, goToEncy, onKeyDown] =
+    useSearchFlower("");
   return (
     <div className={styles.content}>
       <LogoTitle />
@@ -155,8 +157,15 @@ function Content({
         <input
           className={`flex border-blue-600  ${styles.searchInput}`}
           placeholder="Type in the Flower Name"
+          onChange={handleFlowerName}
+          onKeyDown={onKeyDown}
+          value={flowerName}
         />
-        <button className={`${styles.searchbtn} bg-white`}>
+        <button
+          type="submit"
+          className={`${styles.searchbtn} bg-white`}
+          onClick={goToEncy}
+        >
           <img src={searchIcon} />
         </button>
       </motion.div>

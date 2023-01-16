@@ -26,7 +26,7 @@ export const getClient = (() => {
 })();
 
 //const { VITE_BASE_URL } = import.meta.env;
-const BASE_URL = import.meta.env.DEV ? "/api" : "http://localhost:8000/api";
+const BASE_URL = import.meta.env.DEV ? "/api" : "https://poisonsvb.com/api";
 
 export const restFetcher = async ({
   method,
@@ -62,4 +62,5 @@ export const QueryKeys = {
   RESULT: "RESULT",
   DETAIL: "DETAIL",
   RANK: "RANK",
+  SEARCH: "SEARCH",
 };

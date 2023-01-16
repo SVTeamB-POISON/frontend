@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import styles from "./styles.module.scss";
 import sampleImg from "@/assets/image1.svg";
 import logo from "@/assets/logo.svg";
@@ -8,11 +9,13 @@ import NavigationBar from "../NavigationBar";
 
 type ResultCardProps = {
   result: ResultData;
+  onClick: () => void;
 };
 
-export default function ResultCard({ result }: ResultCardProps) {
+// result랑 같이 onClick 함수 props로 받아와서 li에 onClick 함수 연결
+export default function ResultCard({ result, onClick }: ResultCardProps) {
   return (
-    <li className={styles.container}>
+    <li className={styles.container} onClick={onClick}>
       <div
         className={styles.imageSection}
         style={{ backgroundImage: `url(${result.s3_url})` }}
