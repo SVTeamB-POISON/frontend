@@ -61,22 +61,12 @@ export default function MainPage() {
 
   //랭킹 확인 필요
   const [rankOpen, setrankOpen] = useState(false);
-  const [underRank, setUnderRank] = useState<Rank[]>([]);
-  const { data, isLoading: rankLoading } = useQuery<Rank[]>(
-    [QueryKeys.RANK],
-    () =>
-      restFetcher({
-        method: "GET",
-        path: "/flowers/hour-ranking",
-      }),
+  const { data } = useQuery<Rank[]>([QueryKeys.RANK], () =>
+    restFetcher({
+      method: "GET",
+      path: "/flowers/hour-ranking",
+    }),
   );
-
-  useEffect(() => {
-    if (data?.length === 6) {
-      setUnderRank(data?.splice(3, 3));
-      [data[0], data[1]] = [data[1], data[0]];
-    }
-  }, [data]);
 
   const openRank = () => {
     setrankOpen(true);
@@ -86,6 +76,7 @@ export default function MainPage() {
     if (!(e.target instanceof HTMLElement)) return;
     if (e.target.id === "rankOverLay") setrankOpen(false);
   };
+
   return (
     <div className={styles.container}>
       <div className={styles.rankBtnContainer}>
@@ -118,7 +109,7 @@ export default function MainPage() {
           className={styles.rankOverlay}
           onClick={closeRank}
         >
-          <RankModal rankData={data!} underRank={underRank!} />
+          <RankModal rankData={data!} />
         </div>
       )}
     </div>

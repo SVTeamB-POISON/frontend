@@ -1,7 +1,7 @@
 .container {
   align-items: center;
   justify-items: center;
-  gap: 1rem;
+  width: 100%;
 }
 
 .image {
@@ -14,15 +14,26 @@
 
 .labelContainer {
   display: flex;
+  width: 80%;
   align-items: center;
+  justify-content: space-around;
   & > p {
     margin: 2rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: white;
   }
 }
+
+.poison {
+  position: fixed;
+  left: 5.8rem;
+  bottom: 13.8rem;
+  z-index: 700;
+  width: 4rem;
+}
+
 .line {
-  width: 20rem;
+  width: 80%;
   height: 10px;
   background-color: whi;
 }
