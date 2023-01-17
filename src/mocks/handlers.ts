@@ -239,17 +239,17 @@ const rank: Rank[] = [
     count: 30,
   },
   {
-    name: "튤립",
+    name: "개나리",
     s3_url:
       "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/8d114fbf-efcb-45ba-8e3b-9ac74ea06833",
     poison: false,
-    count: 20,
+    count: 1,
   },
   {
     name: "튤립",
     s3_url:
       "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/8d114fbf-efcb-45ba-8e3b-9ac74ea06833",
-    poison: false,
+    poison: true,
     count: 20,
   },
   {
