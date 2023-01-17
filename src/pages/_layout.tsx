@@ -11,8 +11,15 @@ export default function Layout() {
 }
 function LoadingPage() {
   return (
-    <div style={{ backgroundColor: "#a8b0d7" }}>
-      <Loading />
-    </div>
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#a8b0d7",
+      }}
+    />
   );
 }
