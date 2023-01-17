@@ -16,12 +16,8 @@ export default function RankList({ result, index }: RankData) {
         <p className={result.poison ? styles.poisonColor : styles.safeColor}>
           {index + 4}위
         </p>
-        <p className={result.poison ? styles.poisonColor : styles.safeColor}>
-          {result.name}
-        </p>
-        <p className={result.poison ? styles.poisonColor : styles.safeColor}>
-          {result.count}회
-        </p>
+        <p>{result.name}</p>
+        <p>{result.count}회</p>
       </div>
       <hr className={styles.line} />
     </div>

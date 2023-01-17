@@ -17,12 +17,8 @@ export default function RankTop({ result, index }: RankData) {
       <img className={`${styles.image}`} src={result.s3_url} />
       <hr className={styles.line} />
       <div className={`flex flex-row ${styles.labelContainer}`}>
-        <p className={result.poison ? styles.poisonColor : styles.safeColor}>
-          {result.name}
-        </p>
-        <p className={result.poison ? styles.poisonColor : styles.safeColor}>
-          {result.count}회
-        </p>
+        <p>{result.name}</p>
+        <p>{result.count}회</p>
       </div>
     </div>
   );
