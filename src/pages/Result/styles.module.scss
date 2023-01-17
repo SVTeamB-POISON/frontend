@@ -99,3 +99,11 @@
   animation-name: fadeIn;
   animation-fill-mode: forwards;
 }
+.loadingContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

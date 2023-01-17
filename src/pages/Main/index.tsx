@@ -84,7 +84,10 @@ export default function MainPage() {
       </div>
 
       {isLoading ? (
-        <Loading />
+        <div className={styles.loadingContainer}>
+          <h1>판별중입니다...</h1>
+          <Loading />
+        </div>
       ) : (
         <Content
           isDragAccept={isDragAccept}

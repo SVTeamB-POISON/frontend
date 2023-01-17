@@ -9,6 +9,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 import { QueryKeys, restFetcher } from "@/queryClient";
 import { useQueries } from "@tanstack/react-query";
+import Loading2 from "@/components/Loading2";
 
 type RouterState = {
   data: ResultData[];
@@ -70,6 +71,13 @@ export default function ResultPage() {
       navigate("/");
     }
   }, []);
+  if (details.filter((detail) => detail.isFetching).length > 0) {
+    return (
+      <div className={styles.loadingContainer}>
+        <Loading2 />
+      </div>
+    );
+  }
   return (
     <div
       className={styles.container}
