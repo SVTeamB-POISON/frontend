@@ -185,7 +185,7 @@ function Content({
         </div>
         {isFileUploaded ? (
           <button className={styles.uploadbtn} onClick={handleUpload}>
-            업로두
+            업로드
           </button>
         ) : (
           <p>파일 선택 또는 드래그</p>
