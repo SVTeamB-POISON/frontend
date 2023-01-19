@@ -1,7 +1,7 @@
 .container {
   align-items: center;
   justify-items: center;
-  width: 100%;
+  width: 40rem;
 }
 
 .image {
@@ -17,23 +17,24 @@
   width: 80%;
   align-items: center;
   justify-content: space-around;
-  & > p {
-    margin: 2rem;
+  & > div {
+    width: 10rem;
     font-size: 1.5rem;
     color: white;
+    text-align: center;
   }
 }
 
 .poison {
   position: fixed;
-  left: 5.8rem;
-  bottom: 13.8rem;
+  left: 0em;
+  margin-bottom: 3rem;
   z-index: 700;
   width: 4rem;
 }
 
 .line {
+  margin-top: 1rem;
   width: 80%;
   height: 10px;
-  background-color: whi;
 }

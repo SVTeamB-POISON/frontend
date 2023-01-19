@@ -17,8 +17,8 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import RankingBtn from "@/components/RankingBtn";
 import RankModal from "@/components/RankModal";
-import { Rank } from "@/types/rank";
 import useSearchFlower from "@/hooks/useSearchFlower";
+import { Rank } from "@/types/rank";
 
 interface FileType extends File {
   preview: string;
@@ -61,10 +61,16 @@ export default function MainPage() {
 
   //랭킹 확인 필요
   const [rankOpen, setrankOpen] = useState(false);
-  const { data } = useQuery<Rank[]>([QueryKeys.RANK], () =>
+  const { data: rankHour } = useQuery<Rank[]>([QueryKeys.RANKHOUR], () =>
     restFetcher({
       method: "GET",
       path: "/flowers/hour-ranking",
+    }),
+  );
+  const { data: rankTotal } = useQuery<Rank[]>([QueryKeys.RANKTOTAL], () =>
+    restFetcher({
+      method: "GET",
+      path: "/flowers/total-ranking",
     }),
   );
 
@@ -106,7 +112,11 @@ export default function MainPage() {
           className={styles.rankOverlay}
           onClick={closeRank}
         >
-          <RankModal rankData={data!} />
+          <RankModal
+            rankHour={rankHour!}
+            rankTotal={rankTotal!}
+            setRankOpen={setrankOpen}
+          />
         </div>
       )}
     </div>

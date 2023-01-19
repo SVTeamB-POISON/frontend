@@ -61,6 +61,7 @@ export const QueryKeys = {
   ENCY: "ENCY",
   RESULT: "RESULT",
   DETAIL: "DETAIL",
-  RANK: "RANK",
+  RANKHOUR: "RANKHOUR",
   SEARCH: "SEARCH",
+  RANKTOTAL: "RANKTOTAL",
 };
