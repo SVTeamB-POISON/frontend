@@ -321,7 +321,7 @@ export const handlers = [
         }),
       );
     }
-    return res(ctx.status(200), ctx.json(data[0]));
+    return res(ctx.status(200), ctx.delay(500), ctx.json(data[0]));
   }),
   rest.get("/api/flowers", (req, res, ctx) => {
     const page = req.url.searchParams.get("page");

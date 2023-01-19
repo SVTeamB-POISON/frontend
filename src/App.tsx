@@ -4,10 +4,12 @@ import { getClient } from "./queryClient";
 import "@/reset.scss";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { routes } from "@/Routes";
+import * as Sentry from "@sentry/react";
 
-export default function App() {
+function App() {
   const queryClient = getClient();
   const elem = useRoutes(routes);
+
   return (
     <QueryClientProvider client={queryClient}>
       {elem}
@@ -15,3 +17,4 @@ export default function App() {
     </QueryClientProvider>
   );
 }
+export default Sentry.withProfiler(App);

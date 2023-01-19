@@ -17,7 +17,8 @@
   width: 100vw;
   height: 300px;
   max-height: 35vh;
-  object-fit: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .content {
@@ -62,7 +63,11 @@
     height: 1.5rem;
   }
   &:hover {
-    opacity: 0.8;
+    border-color: var(--purple-color);
+    background-color: rgb(135, 63, 161);
+  }
+  &:hover .searchIcon {
+    filter: invert(100%) hue-rotate(275deg) brightness(100%) contrast(1000%);
   }
 }
 
@@ -77,6 +82,7 @@
   height: 20rem;
   background-color: white;
   border-radius: 20px;
+  box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
   & > p {
     font-size: 1.6rem;
     color: var(--purple-color);
@@ -138,4 +144,15 @@
   animation-timing-function: ease-out;
   animation-name: fadeIn;
   animation-fill-mode: forwards;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  & > h1 {
+    font-size: 2.5rem;
+  }
 }
