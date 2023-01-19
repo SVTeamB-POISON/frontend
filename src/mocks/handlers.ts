@@ -216,13 +216,13 @@ const detail: DetailData[] = [
   },
 ];
 
-const rank: Rank[] = [
+const rankHour: Rank[] = [
   {
-    name: "협죽도",
+    name: "협죽 도자기",
     s3_url:
       "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/4adff758-1c40-4ca0-ba4c-868c0c29f84a",
     poison: true,
-    count: 10,
+    count: 10000,
   },
   {
     name: "민들레",
@@ -242,7 +242,7 @@ const rank: Rank[] = [
     name: "개나리",
     s3_url:
       "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/8d114fbf-efcb-45ba-8e3b-9ac74ea06833",
-    poison: false,
+    poison: true,
     count: 1,
   },
   {
@@ -256,8 +256,45 @@ const rank: Rank[] = [
     name: "장미",
     s3_url:
       "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/9baacd40-d17f-404b-8029-fff7bbe2c808",
+    poison: true,
+    count: 23000,
+  },
+];
+const rankTotal: Rank[] = [
+  {
+    name: "토탈입니다",
+    s3_url:
+      "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/4adff758-1c40-4ca0-ba4c-868c0c29f84a",
+    poison: true,
+    total_count: 50,
+  },
+  {
+    name: "민들레",
+    s3_url:
+      "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/65cd70f5-2ef0-45cc-a1cf-67c2be67f37f",
     poison: false,
-    count: 230,
+    total_count: 50,
+  },
+  {
+    name: "독당근",
+    s3_url:
+      "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/454c9693-a8b4-4e08-bbe2-213f2bef09b0",
+    poison: true,
+    total_count: 50,
+  },
+  {
+    name: "튤립",
+    s3_url:
+      "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/8d114fbf-efcb-45ba-8e3b-9ac74ea06833",
+    poison: false,
+    total_count: 50,
+  },
+  {
+    name: "장미",
+    s3_url:
+      "https://svteam-b-bucket.s3.ap-northeast-1.amazonaws.com/static/9baacd40-d17f-404b-8029-fff7bbe2c808",
+    poison: true,
+    total_count: 50,
   },
 ];
 
@@ -300,6 +337,9 @@ export const handlers = [
     }
   }),
   rest.get("/api/flowers/hour-ranking", (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(rank));
+    return res(ctx.status(200), ctx.json(rankHour));
+  }),
+  rest.get("/api/flowers/total-ranking", (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(rankTotal));
   }),
 ];
