@@ -4,7 +4,7 @@ import { EncyResponse } from "@/types/ency";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import FlowerCard from "@/components/FlowerCard";
 import NavigationBar from "@/components/NavigationBar";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import InfiniteScroll from "react-infinite-scroller";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -186,17 +186,24 @@ export default function EncyclopediaPage() {
           </InfiniteScroll>
         )}
       </motion.div>
-      {modalOpen && (
-        <div className={styles.modalOverlay} id="overlay" onClick={closeModal}>
-          {isDetailFetching ? (
-            <Loading2 />
-          ) : (
-            <DetailModal close={closeModal} detail={detail!}>
-              children
-            </DetailModal>
-          )}
-        </div>
-      )}
+      <AnimatePresence>
+        {modalOpen && (
+          <motion.div
+            className={styles.modalOverlay}
+            id="overlay"
+            onClick={closeModal}
+            exit={{ opacity: 0 }}
+          >
+            {isDetailFetching ? (
+              <Loading2 />
+            ) : (
+              <DetailModal close={closeModal} detail={detail!}>
+                children
+              </DetailModal>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

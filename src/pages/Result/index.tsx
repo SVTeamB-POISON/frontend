@@ -4,7 +4,7 @@ import ResultCard from "@/components/ResultCard";
 import DetailModal from "@/components/DetailModal";
 import { ResultData } from "@/types/result";
 import { DetailData } from "@/types/detail";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 import { QueryKeys, restFetcher } from "@/queryClient";
@@ -124,14 +124,20 @@ export default function ResultPage() {
           ))}
         </ul>
       </motion.div>
-
-      {modalOpen && (
-        <div className={styles.modalOverlay} id="overlay" onClick={closeModal}>
-          <DetailModal close={closeModal} detail={modalData!}>
-            children
-          </DetailModal>
-        </div>
-      )}
+      <AnimatePresence>
+        {modalOpen && (
+          <motion.div
+            className={styles.modalOverlay}
+            id="overlay"
+            onClick={closeModal}
+            exit={{ opacity: 0 }}
+          >
+            <DetailModal close={closeModal} detail={modalData!}>
+              children
+            </DetailModal>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
