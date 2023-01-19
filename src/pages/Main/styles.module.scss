@@ -62,7 +62,11 @@
     height: 1.5rem;
   }
   &:hover {
-    opacity: 0.8;
+    border-color: var(--purple-color);
+    background-color: rgb(135, 63, 161);
+  }
+  &:hover .searchIcon {
+    filter: invert(100%) hue-rotate(275deg) brightness(100%) contrast(1000%);
   }
 }
 

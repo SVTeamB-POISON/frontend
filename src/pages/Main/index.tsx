@@ -14,7 +14,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { QueryKeys, restFetcher } from "@/queryClient";
 import Loading from "@/components/Loading";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import RankingBtn from "@/components/RankingBtn";
 import RankModal from "@/components/RankModal";
 import { Rank } from "@/types/rank";
@@ -103,15 +103,18 @@ export default function MainPage() {
         className={styles.backgroundImg}
         style={{ backgroundImage: `url(${main_background})` }}
       />
-      {rankOpen && (
-        <div
-          id="rankOverLay"
-          className={styles.rankOverlay}
-          onClick={closeRank}
-        >
-          <RankModal rankData={data!} />
-        </div>
-      )}
+      <AnimatePresence>
+        {rankOpen && (
+          <motion.div
+            id="rankOverLay"
+            className={styles.rankOverlay}
+            onClick={closeRank}
+            exit={{ opacity: 0 }}
+          >
+            <RankModal rankData={data!} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -160,7 +163,7 @@ function Content({
           className={`${styles.searchbtn} bg-white`}
           onClick={goToEncy}
         >
-          <img src={searchIcon} />
+          <img className={styles.searchIcon} src={searchIcon} />
         </button>
       </motion.div>
       <motion.div
