@@ -78,11 +78,10 @@
   align-items: center;
   z-index: 10;
   &:hover .searchIcon {
-    filter: invert(13%) sepia(42%) saturate(5458%) hue-rotate(275deg)
-      brightness(50%) contrast(109%);
+    filter: invert(100%) hue-rotate(275deg) brightness(100%) contrast(1000%);
   }
   &:hover {
-    border-color: var(--purple-color);
+    background-color: rgb(147, 83, 170);
   }
 }
 

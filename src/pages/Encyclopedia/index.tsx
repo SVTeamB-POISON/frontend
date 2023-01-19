@@ -4,13 +4,13 @@ import { EncyResponse } from "@/types/ency";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import FlowerCard from "@/components/FlowerCard";
 import NavigationBar from "@/components/NavigationBar";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import InfiniteScroll from "react-infinite-scroller";
-import Loading from "@/components/Loading";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { DetailData } from "@/types/detail";
 import DetailModal from "@/components/DetailModal";
+import Loading2 from "@/components/Loading2";
 
 type LocationState = {
   flowerName: string;
@@ -65,7 +65,7 @@ export default function EncyclopediaPage() {
   const {
     data: detail,
     refetch,
-    isLoading: isDetailLoading,
+    isFetching: isDetailFetching,
   } = useQuery<DetailData>(
     [QueryKeys.DETAIL, detailName],
     () =>
@@ -102,7 +102,20 @@ export default function EncyclopediaPage() {
     }
     if (!flowerName) setIsSearch(false);
   }, [flowerName]);
-  if (isLoading || searchIsLoading) return <Loading />;
+  if (isLoading || searchIsLoading)
+    return (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Loading2 />
+      </div>
+    );
   if (isError || searchIsError) return <div>Error! {error?.toString()}</div>;
   return (
     <div
@@ -133,7 +146,7 @@ export default function EncyclopediaPage() {
       >
         {isSearch ? (
           searchIsFetching ? (
-            <Loading height="20rem" />
+            <Loading2 />
           ) : (
             <InfiniteScroll
               loadMore={() => searchFetchNextPage()}
@@ -150,7 +163,7 @@ export default function EncyclopediaPage() {
                   ));
                 })}
               </ul>
-              {searchIsFetching && <Loading isInfinite={true} />}
+              {searchIsFetching && <Loading2 />}
             </InfiniteScroll>
           )
         ) : (
@@ -169,17 +182,28 @@ export default function EncyclopediaPage() {
                 ));
               })}
             </ul>
-            {isFetching && <Loading isInfinite={true} />}
+            {isFetching && <Loading2 />}
           </InfiniteScroll>
         )}
       </motion.div>
-      {!isDetailLoading && modalOpen && (
-        <div className={styles.modalOverlay} id="overlay" onClick={closeModal}>
-          <DetailModal close={closeModal} detail={detail!}>
-            children
-          </DetailModal>
-        </div>
-      )}
+      <AnimatePresence>
+        {modalOpen && (
+          <motion.div
+            className={styles.modalOverlay}
+            id="overlay"
+            onClick={closeModal}
+            exit={{ opacity: 0 }}
+          >
+            {isDetailFetching ? (
+              <Loading2 />
+            ) : (
+              <DetailModal close={closeModal} detail={detail!}>
+                children
+              </DetailModal>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

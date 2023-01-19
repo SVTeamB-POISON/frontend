@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles.module.scss";
 import icon_x from "@/assets/icon_x.png";
 import { DetailData } from "@/types/detail";
+import { motion } from "framer-motion";
 
 type DetailModalProps = {
   close: (e: React.SyntheticEvent) => void;
@@ -38,14 +39,16 @@ function DetailModal(props: DetailModalProps) {
             </div>
           </div>
         </div>
-        <div
+        <motion.div
           className={styles.closeButton}
           id="close"
           onClick={close}
           style={{ backgroundColor: detail.poison ? "#f99ee6" : "#8DC36C" }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
           <img src={icon_x} id="closeImg" alt="closebutton" />
-        </div>
+        </motion.div>
         <div className={styles.detailDesc}>
           <p>{detail.detail}</p>
         </div>
