@@ -17,7 +17,8 @@
   width: 100vw;
   height: 300px;
   max-height: 35vh;
-  object-fit: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .content {

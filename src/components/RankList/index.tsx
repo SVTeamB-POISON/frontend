@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 import { Rank } from "@/types/rank";
-import logo from "@/assets/Logo.svg";
+import logo from "@/assets/logo.svg";
 
 type RankData = {
   result: Rank;
