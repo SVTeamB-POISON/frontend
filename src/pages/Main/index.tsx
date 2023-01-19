@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import main_background from "@/assets/main_background.png";
 import upload from "@/assets/upload.svg";
 import searchIcon from "@/assets/search.svg";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   useDropzone,
   DropzoneRootProps,
