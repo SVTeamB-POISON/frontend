@@ -51,8 +51,8 @@ export default function NavigationBar() {
           >
             <img className={`${styles.logoImg}`} src={logo}></img>
             <div className={`flex flex-col mt-2`}>
-              <h1 className={`${styles.logoName}`}>POISON</h1>
-              <h2 className={`${styles.logosubName}`}>독초 판별 사이트</h2>
+              <p className={`${styles.logoName}`}>POISON</p>
+              <p className={`${styles.logosubName}`}>독초 판별 사이트</p>
             </div>
           </motion.div>
           <button className={styles.encyBTN} onClick={goToEncy}>

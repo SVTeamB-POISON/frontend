@@ -8,7 +8,7 @@
   justify-content: space-between;
   background-color: var(--background-color);
   z-index: 100;
-  background: rgba(255, 255, 255, 0.15);
+  background: B8BFDE;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(20px);
 }
@@ -43,18 +43,19 @@
 }
 
 .logoName {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-family: "Sunshiney", cursive;
 }
 .logosubName {
-  font-size: 0.9rem;
+  font-size: 1rem;
+  padding-left: 2px;
 }
 .encyBTN {
   color: #3d8a71;
   margin-left: 3rem;
   font-size: 2rem;
   &:hover {
-    color: #88c8b3;
+    color: #002c1d;
   }
 }
 .rankBTN {
@@ -62,7 +63,7 @@
   margin-left: 2rem;
   font-size: 2rem;
   &:hover {
-    color: #88c8b3;
+    color: #002c1d;
   }
 }
 
