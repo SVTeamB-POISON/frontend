@@ -9,16 +9,14 @@ import {
   DropzoneInputProps,
 } from "react-dropzone";
 import LogoTitle from "@/components/LogoTitle";
-import EncyBtn from "@/components/EncyclopediaBtn";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { QueryKeys, restFetcher } from "@/queryClient";
 import Loading from "@/components/Loading";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import RankingBtn from "@/components/RankingBtn";
-import RankModal from "@/components/RankModal";
 import useSearchFlower from "@/hooks/useSearchFlower";
-import { Rank } from "@/types/rank";
+
+import NavigationBar from "@/components/NavigationBar";
 
 interface FileType extends File {
   preview: string;
@@ -58,36 +56,9 @@ export default function MainPage() {
     onDrop,
   });
   const isFileUploaded = Boolean(files.length);
-
-  //랭킹 확인 필요
-  const [rankOpen, setrankOpen] = useState(false);
-  const { data: rankHour } = useQuery<Rank[]>([QueryKeys.RANKHOUR], () =>
-    restFetcher({
-      method: "GET",
-      path: "/flowers/hour-ranking",
-    }),
-  );
-  const { data: rankTotal } = useQuery<Rank[]>([QueryKeys.RANKTOTAL], () =>
-    restFetcher({
-      method: "GET",
-      path: "/flowers/total-ranking",
-    }),
-  );
-
-  const openRank = () => {
-    setrankOpen(true);
-  };
-
-  const closeRank = (e: React.SyntheticEvent) => {
-    if (!(e.target instanceof HTMLElement)) return;
-    if (e.target.id === "rankOverLay") setrankOpen(false);
-  };
-
   return (
     <div className={styles.container}>
-      <div className={styles.rankBtnContainer}>
-        <RankingBtn onClick={openRank} />
-      </div>
+      <NavigationBar />
 
       {isLoading ? (
         <div className={styles.loadingContainer}>
@@ -104,27 +75,10 @@ export default function MainPage() {
           getInputProps={getInputProps}
         />
       )}
-      <EncyBtn />
       <div
         className={styles.backgroundImg}
         style={{ backgroundImage: `url(${main_background})` }}
       />
-      <AnimatePresence>
-        {rankOpen && (
-          <motion.div
-            id="rankOverLay"
-            className={styles.rankOverlay}
-            onClick={closeRank}
-            exit={{ opacity: 0 }}
-          >
-            <RankModal
-              rankHour={rankHour!}
-              rankTotal={rankTotal!}
-              setRankOpen={setrankOpen}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }

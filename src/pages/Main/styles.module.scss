@@ -124,27 +124,6 @@
     background-color: var(--button-color);
   }
 }
-.rankBtnContainer {
-  position: fixed;
-  top: -35%;
-  right: -40%;
-}
-
-.rankOverlay {
-  position: fixed;
-  display: flex;
-  justify-content: space-evenly;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 200;
-  animation-duration: 0.25s;
-  animation-timing-function: ease-out;
-  animation-name: fadeIn;
-  animation-fill-mode: forwards;
-}
 
 .loadingContainer {
   display: flex;
