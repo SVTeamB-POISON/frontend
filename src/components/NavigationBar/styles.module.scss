@@ -1,9 +1,11 @@
+@import "@/media.scss";
+
 .container {
   position: fixed;
   top: 0;
   width: 100%;
   max-width: 1400px;
-  height: 5rem;
+  height: 4rem;
   align-items: center;
   justify-content: space-between;
   background-color: var(--background-color);
@@ -11,12 +13,18 @@
   background: B8BFDE;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(20px);
+  @include desktop {
+    height: 3rem;
+  }
 }
 
 .subcontainer {
   display: flex;
   align-items: center;
   max-width: 1400px;
+  @include desktop {
+    height: 3rem;
+  }
 }
 .searchContainer {
   display: flex;
@@ -24,6 +32,9 @@
   margin-right: 1rem;
   width: 15rem;
   height: 2rem;
+  @include desktop {
+    height: 1rem;
+  }
 }
 
 .title {
@@ -40,15 +51,26 @@
   margin-right: 0.5rem;
   width: 5rem;
   height: 5rem;
+  @include desktop {
+    width: 3rem;
+  }
 }
 
 .logoName {
   font-size: 1.8rem;
   font-family: "Sunshiney", cursive;
+  @include desktop {
+    margin-top: 0.5rem;
+    font-size: 1.3rem;
+  }
 }
 .logosubName {
   font-size: 1rem;
   padding-left: 2px;
+  @include desktop {
+    font-size: 1rem;
+    margin-top: -10px;
+  }
 }
 .encyBTN {
   color: #3d8a71;
@@ -57,6 +79,9 @@
   &:hover {
     color: #002c1d;
   }
+  @include desktop {
+    font-size: 1.3rem;
+  }
 }
 .rankBTN {
   color: #3d8a71;
@@ -64,6 +89,9 @@
   font-size: 2rem;
   &:hover {
     color: #002c1d;
+  }
+  @include desktop {
+    font-size: 1.3rem;
   }
 }
 
@@ -82,6 +110,10 @@
   }
   &:focus::placeholder {
     color: transparent;
+  }
+
+  @include desktop {
+    height: 2rem;
   }
 }
 
@@ -102,6 +134,9 @@
   }
   &:hover {
     background-color: rgb(147, 83, 170);
+  }
+  @include desktop {
+    height: 2rem;
   }
 }
 
