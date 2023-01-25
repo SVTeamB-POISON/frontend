@@ -18,37 +18,71 @@
 }
 
 .container {
-  width: 35rem;
-  height: 45rem;
+  width: 40rem;
+  height: 44rem;
   border-width: 20px;
   border-color: black;
   border-radius: 20px;
   position: absolute;
-  top: 7.5%;
+  top: 5.5%;
   padding: 3rem;
   background-color: #5c79cf;
   padding-top: 4rem;
   align-items: center;
   animation: modal-show 0.3s;
   z-index: 500;
+  & > h1 {
+    color: white;
+    font-size: 3rem;
+  }
 }
 .subContainer1 {
-  width: 35rem;
+  width: 40rem;
   align-items: center;
   justify-content: center;
-  gap: 5rem;
+  gap: 4rem;
   margin-top: 3rem;
   & > div:nth-child(2) {
     transform: translateY(-3rem);
   }
 }
+.buttonContainer {
+  position: absolute;
+  left: 4rem;
+  top: 2rem;
+  gap: 1rem;
+}
+.closeBTN {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  & > img {
+    width: 2rem;
+  }
+  &:hover .Xicon {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(125deg)
+      brightness(103%) contrast(103%);
+  }
+}
+.RankBTN {
+  color: white;
+  font-size: 1.3rem;
+  border-color: white;
+  border-bottom: 5px;
+  &:hover {
+    color: var(--button-color) !important;
+  }
+  &:first-child {
+    margin-right: 1rem;
+  }
+}
+
 .crown {
   position: absolute;
   width: 7rem;
   height: 7rem;
   top: 0rem;
   justify-items: center;
-  margin-right: 12px;
 }
 
 .subContainer2 {

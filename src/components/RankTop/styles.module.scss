@@ -18,11 +18,13 @@
 }
 
 .labelContainer {
-  display: flex;
-  gap: 2rem;
-  & > p {
-    font-size: 1.5rem;
+  display: fixed;
+  margin-top: 10%;
+  & > div {
+    font-size: 1.3rem;
     color: white;
+    width: 5rem;
+    text-align: center;
   }
 }
 
@@ -42,7 +44,7 @@
 }
 
 .line {
-  width: 7rem;
+  width: 9rem;
   height: 1px;
   background-color: white;
 }
