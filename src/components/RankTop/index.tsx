@@ -1,6 +1,9 @@
 import styles from "./styles.module.scss";
 import { Rank } from "@/types/rank";
 import logo from "@/assets/logo.svg";
+import FirstMedal from "@/assets/FirstMedal.png";
+import SecondMedal from "@/assets/SecondMedal.png";
+import ThirdMedal from "@/assets/ThirdMedal.png";
 
 type RankData = {
   result: Rank;
@@ -10,6 +13,13 @@ type RankData = {
 export default function RankTop({ result, index }: RankData) {
   return (
     <div className={`flex flex-col ${styles.container}`}>
+      {index === 0 ? (
+        <img className={styles.medal} src={SecondMedal} />
+      ) : index === 1 ? (
+        <img className={styles.medal} src={FirstMedal} />
+      ) : (
+        <img className={styles.medal} src={ThirdMedal} />
+      )}
       {result.poison && <img className={styles.poison} src={logo} />}
       <h1 className={styles.rank}>
         {index === 0 ? index + 2 : index === 1 ? index : index + 1}위

@@ -74,7 +74,13 @@ export default function MainPage() {
 
   const closeRank = (e: React.SyntheticEvent) => {
     if (!(e.target instanceof HTMLElement)) return;
-    if (e.target.id === "rankOverLay") setrankOpen(false);
+    if (
+      e.target.id === "rankOverLay" ||
+      e.target.id === "close" ||
+      e.target.id === "closeImg"
+    ) {
+      setrankOpen(false);
+    }
   };
 
   return (
@@ -111,7 +117,7 @@ export default function MainPage() {
             onClick={closeRank}
             exit={{ opacity: 0 }}
           >
-            <RankModal rankData={data!} />
+            <RankModal rankData={data!} close={closeRank} />
           </motion.div>
         )}
       </AnimatePresence>
