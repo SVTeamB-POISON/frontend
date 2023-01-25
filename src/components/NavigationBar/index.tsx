@@ -42,45 +42,48 @@ export default function NavigationBar() {
   return (
     <>
       <div className={`flex flex-row ${styles.container}`}>
-        <div className={`flex flex-row ${styles.subcontainer}`}>
-          <motion.div
-            className={`flex flex-row ${styles.title}`}
-            onClick={goToHome}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <img className={`${styles.logoImg}`} src={logo}></img>
-            <div className={`flex flex-col mt-2`}>
-              <p className={`${styles.logoName}`}>POISON</p>
-              <p className={`${styles.logosubName}`}>독초 판별 사이트</p>
-            </div>
-          </motion.div>
-          <button className={styles.encyBTN} onClick={goToEncy}>
-            도감
-          </button>
-          <button className={styles.rankBTN} onClick={openRank}>
-            랭킹
-          </button>
-        </div>
-        <div className={`flex flex-row  ${styles.searchContainer}`}>
-          <input
-            className={`flex ${styles.searchInput}`}
-            placeholder="Type in the Flower Name"
-            onChange={handleFlowerName}
-            onKeyDown={onKeyDown}
-            value={flowerName}
-          />
-          <motion.div whileTap={{ scale: 0.9 }}>
-            <button
-              type="submit"
-              className={`flex ${styles.searchbtn}`}
-              onClick={goToEncy}
+        <div className={`flex flex-row ${styles.itemcontainer}`}>
+          <div className={`flex flex-row ${styles.subcontainer}`}>
+            <motion.div
+              className={`flex flex-row ${styles.title}`}
+              onClick={goToHome}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
-              <img src={search} className={styles.searchIcon} />
+              <img className={`${styles.logoImg}`} src={logo}></img>
+              <div className={`flex flex-col mt-2`}>
+                <p className={`${styles.logoName}`}>POISON</p>
+                <p className={`${styles.logosubName}`}>독초 판별 사이트</p>
+              </div>
+            </motion.div>
+            <button className={styles.encyBTN} onClick={goToEncy}>
+              도감
             </button>
-          </motion.div>
+            <button className={styles.rankBTN} onClick={openRank}>
+              랭킹
+            </button>
+          </div>
+          <div className={`flex flex-row  ${styles.searchContainer}`}>
+            <input
+              className={`flex ${styles.searchInput}`}
+              placeholder="Type in the Flower Name"
+              onChange={handleFlowerName}
+              onKeyDown={onKeyDown}
+              value={flowerName}
+            />
+            <motion.div whileTap={{ scale: 0.9 }}>
+              <button
+                type="submit"
+                className={`flex ${styles.searchbtn}`}
+                onClick={goToEncy}
+              >
+                <img src={search} className={styles.searchIcon} />
+              </button>
+            </motion.div>
+          </div>
         </div>
       </div>
+
       <AnimatePresence>
         {rankOpen && (
           <motion.div
