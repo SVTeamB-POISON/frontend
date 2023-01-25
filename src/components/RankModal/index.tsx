@@ -7,8 +7,6 @@ import React, { useState } from "react";
 import icon_x from "@/assets/icon_x.png";
 import { motion } from "framer-motion";
 
-  setRankOpen: React.Dispatch<React.SetStateAction<boolean>>;
-
 type RankModalProp = {
   rankTotal: Rank[];
   rankHour: Rank[];
@@ -19,7 +17,7 @@ export default function RankModal({
   rankTotal,
   rankHour,
   setRankOpen,
-  close
+  close,
 }: RankModalProp) {
   const [total, setTotal] = useState(true);
   const totalClick = () => {

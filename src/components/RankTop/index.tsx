@@ -7,7 +7,7 @@ import ThirdMedal from "@/assets/ThirdMedal.png";
 
 type RankData = {
   index: number;
-  result?: Rank;
+  result: Rank;
   clicked: Boolean;
 };
 
