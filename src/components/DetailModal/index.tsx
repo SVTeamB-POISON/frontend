@@ -41,7 +41,6 @@ function DetailModal(props: DetailModalProps) {
         </div>
         <motion.div
           className={styles.closeButton}
-          id="close"
           onClick={close}
           style={{ backgroundColor: detail.poison ? "#f99ee6" : "#8DC36C" }}
           whileHover={{ scale: 1.1 }}

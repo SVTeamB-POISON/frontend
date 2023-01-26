@@ -5,16 +5,19 @@ import RankTop from "../RankTop";
 import { Rank } from "@/types/rank";
 import React, { useState } from "react";
 import icon_x from "@/assets/icon_x.png";
+import { motion } from "framer-motion";
 
 type RankModalProp = {
   rankTotal: Rank[];
   rankHour: Rank[];
   setRankOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  close: (e: React.SyntheticEvent) => void;
 };
 export default function RankModal({
   rankTotal,
   rankHour,
   setRankOpen,
+  close,
 }: RankModalProp) {
   const [total, setTotal] = useState(true);
   const totalClick = () => {
@@ -82,6 +85,16 @@ export default function RankModal({
               <RankList key={idx} result={result} index={idx} clicked={total} /> // <RankList key={idx} result={result} />
             ))}
       </div>
+      <motion.div
+        className={styles.closeButton}
+        id="close"
+        onClick={close}
+        style={{ backgroundColor: "#f99ee6" }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <img src={icon_x} id="closeImg" alt="closebutton" />
+      </motion.div>
     </div>
   );
 }
