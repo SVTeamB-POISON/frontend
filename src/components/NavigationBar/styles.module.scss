@@ -88,29 +88,33 @@
 }
 .encyBTN {
   color: #3d8a71;
-  margin-left: 3rem;
-  font-size: 1.8rem;
+  margin-left: 1rem;
+  font-size: 1.4rem;
   &:hover {
     color: #002c1d;
   }
   @include tablet {
+    margin-left: 2rem;
     font-size: 1.5rem;
   }
   @include desktop {
+    margin-left: 2rem;
     font-size: 1.6rem;
   }
 }
 .rankBTN {
   color: #3d8a71;
-  margin-left: 2rem;
-  font-size: 1.8rem;
+  margin-left: 1rem;
+  font-size: 1.4rem;
   &:hover {
     color: #002c1d;
   }
   @include tablet {
+    margin-left: 2rem;
     font-size: 1.5rem;
   }
   @include desktop {
+    margin-left: 2rem;
     font-size: 1.6rem;
   }
 }
