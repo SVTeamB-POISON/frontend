@@ -27,7 +27,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
   width: 70%;
   max-width: 1176px;
   height: 44rem;
@@ -49,8 +49,8 @@
   border-radius: 10px;
   outline: none;
   padding-left: 1.5rem;
-  font-size: 1.6rem;
-  box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+  font-size: 1.4rem;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .searchbtn {
   flex: 0.2;
@@ -58,7 +58,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   & > img {
     width: 1.5rem;
     height: 1.5rem;
@@ -83,9 +83,10 @@
   height: 20rem;
   background-color: white;
   border-radius: 20px;
-  box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   & > p {
     font-size: 1.6rem;
+    height: 2.8rem;
     color: var(--purple-color);
   }
 }
@@ -97,6 +98,7 @@
   height: 70%;
   border: 3px dashed var(--purple-color);
   border-radius: 10px;
+
   cursor: pointer;
   &:hover {
     opacity: 0.8;
@@ -117,6 +119,7 @@
   padding-left: 1rem;
   padding-right: 1rem;
   border: 3px solid var(--button-color);
+
   border-radius: 10px;
   color: var(--button-color);
   font-size: 1.6rem;
