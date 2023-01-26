@@ -63,30 +63,33 @@
 }
 
 .logoName {
-  font-size: 2.5rem;
+  font-size: 2.1rem;
   font-family: "Sunshiney", cursive;
+  margin-top: 0.6rem;
   @include tablet {
+    margin-top: 0.3rem;
     font-size: 1.5rem;
   }
   @include desktop {
+    margin-top: 0.3rem;
     font-size: 1.5rem;
   }
 }
 .logosubName {
-  margin-top: -10px;
-  font-size: 1.6rem;
+  margin-top: -5px;
+  font-size: 1.3rem;
   padding-left: 2px;
   @include tablet {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   @include desktop {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }
 .encyBTN {
   color: #3d8a71;
   margin-left: 3rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
   &:hover {
     color: #002c1d;
   }
@@ -100,7 +103,7 @@
 .rankBTN {
   color: #3d8a71;
   margin-left: 2rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
   &:hover {
     color: #002c1d;
   }
