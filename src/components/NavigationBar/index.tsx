@@ -96,6 +96,7 @@ export default function NavigationBar() {
               rankHour={rankHour!}
               rankTotal={rankTotal!}
               setRankOpen={setrankOpen}
+              close={close}
             />
           </motion.div>
         )}
