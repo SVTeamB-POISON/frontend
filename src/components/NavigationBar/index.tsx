@@ -51,7 +51,7 @@ export default function NavigationBar() {
               whileTap={{ scale: 0.9 }}
             >
               <img className={`${styles.logoImg}`} src={logo}></img>
-              <div className={`flex flex-col mt-2`}>
+              <div className={`flex flex-col mt-1`}>
                 <p className={`${styles.logoName}`}>POISON</p>
                 <p className={`${styles.logosubName}`}>독초 판별 사이트</p>
               </div>
