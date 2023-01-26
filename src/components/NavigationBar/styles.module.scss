@@ -1,19 +1,42 @@
+@import "@/media.scss";
+
 .container {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 85px;
+  height: 6rem;
   align-items: center;
+  justify-content: center;
   background-color: var(--background-color);
   z-index: 100;
+  background: B8BFDE;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(20px);
+  @include tablet {
+    height: 4rem;
+  }
+  @include desktop {
+    height: 4rem;
+  }
+}
+.itemcontainer {
+  width: 100%;
+  max-width: 1400px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.searchSection {
+.subcontainer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 90vw;
   max-width: 1400px;
+}
+.searchContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  width: 15rem;
+  height: 2rem;
 }
 
 .title {
@@ -27,24 +50,66 @@
   display: flex;
   align-items: center;
   margin-left: 1rem;
-  margin-right: 0.5rem;
-  width: 5rem;
-  height: 5rem;
+  width: 6rem;
+  height: 6rem;
+  @include tablet {
+    height: 4rem;
+    width: 4rem;
+  }
+  @include desktop {
+    height: 4rem;
+    width: 4rem;
+  }
 }
 
 .logoName {
-  display: flex;
-  align-items: center;
   font-size: 2.5rem;
   font-family: "Sunshiney", cursive;
+  @include tablet {
+    font-size: 1.5rem;
+  }
+  @include desktop {
+    font-size: 1.5rem;
+  }
 }
-
-.searchContainer {
-  display: flex;
-  align-items: center;
-  margin-right: 1rem;
-  width: 15rem;
-  height: 2rem;
+.logosubName {
+  margin-top: -10px;
+  font-size: 1.6rem;
+  padding-left: 2px;
+  @include tablet {
+    font-size: 1rem;
+  }
+  @include desktop {
+    font-size: 1rem;
+  }
+}
+.encyBTN {
+  color: #3d8a71;
+  margin-left: 3rem;
+  font-size: 2rem;
+  &:hover {
+    color: #002c1d;
+  }
+  @include tablet {
+    font-size: 1.5rem;
+  }
+  @include desktop {
+    font-size: 1.6rem;
+  }
+}
+.rankBTN {
+  color: #3d8a71;
+  margin-left: 2rem;
+  font-size: 2rem;
+  &:hover {
+    color: #002c1d;
+  }
+  @include tablet {
+    font-size: 1.5rem;
+  }
+  @include desktop {
+    font-size: 1.6rem;
+  }
 }
 
 .searchInput {
@@ -62,6 +127,13 @@
   }
   &:focus::placeholder {
     color: transparent;
+  }
+
+  @include tablet {
+    height: 2rem;
+  }
+  @include desktop {
+    height: 2rem;
   }
 }
 
@@ -83,18 +155,30 @@
   &:hover {
     background-color: rgb(147, 83, 170);
   }
-}
-
-.navline {
-  width: 90vw;
-  height: 5px;
-  background-color: white;
-  border-radius: 10px;
-  max-width: 1400px;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  @include tablet {
+    height: 2rem;
+  }
+  @include desktop {
+    height: 2rem;
+  }
 }
 
 .searchIcon {
   width: 1.5rem;
+}
+
+.rankOverlay {
+  position: fixed;
+  display: flex;
+  justify-content: space-evenly;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 200;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+  animation-name: fadeIn;
+  animation-fill-mode: forwards;
 }

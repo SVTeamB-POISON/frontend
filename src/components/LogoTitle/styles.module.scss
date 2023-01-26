@@ -1,3 +1,5 @@
+@import "@/media.scss";
+
 .container {
   overflow-x: hidden;
   transform: translateX(-5%);
@@ -6,6 +8,10 @@
 .logo {
   width: 10rem;
   height: 10rem;
+  @include tablet {
+  }
+  @include desktop {
+  }
 }
 .textContainer {
   align-items: center;
