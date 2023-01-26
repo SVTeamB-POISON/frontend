@@ -59,7 +59,8 @@ export default function RankModal({
       </div>
       <h1>판별 결과 랭킹</h1>
       <img className={styles.crown} src={firstPlace} />
-      <button className={styles.closeBTN} onClick={closeClick}>
+
+      <button className={styles.closeBTN} id="close" onClick={closeClick}>
         <img
           src={icon_x}
           className={styles.Xicon}
@@ -67,6 +68,7 @@ export default function RankModal({
           alt="closebutton"
         />
       </button>
+
       <div className={`flex flex-row ${styles.subContainer1}`}>
         {total
           ? topTotal?.map((result, idx) => (
@@ -85,16 +87,6 @@ export default function RankModal({
               <RankList key={idx} result={result} index={idx} clicked={total} /> // <RankList key={idx} result={result} />
             ))}
       </div>
-      <motion.div
-        className={styles.closeButton}
-        id="close"
-        onClick={close}
-        style={{ backgroundColor: "#f99ee6" }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <img src={icon_x} id="closeImg" alt="closebutton" />
-      </motion.div>
     </div>
   );
 }
