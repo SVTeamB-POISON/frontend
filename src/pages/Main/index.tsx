@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import main_background from "@/assets/main_background.png";
 import upload from "@/assets/upload.svg";
 import searchIcon from "@/assets/search.svg";
-import React, { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   useDropzone,
   DropzoneRootProps,
@@ -10,21 +10,47 @@ import {
 } from "react-dropzone";
 import LogoTitle from "@/components/LogoTitle";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { QueryKeys, restFetcher } from "@/queryClient";
+import { restFetcher } from "@/queryClient";
 import Loading from "@/components/Loading";
 import { useNavigate } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import useSearchFlower from "@/hooks/useSearchFlower";
 
 import NavigationBar from "@/components/NavigationBar";
+import { ResultData } from "@/types/result";
 
 interface FileType extends File {
   preview: string;
 }
 
 export default function MainPage() {
-  const { mutate, isLoading } = useMutation((formData: FormData) =>
-    restFetcher({ method: "POST", path: "/flowers/image/", body: formData }),
+  const [taskId, setTaskId] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { mutate } = useMutation((formData: FormData) =>
+    restFetcher({ method: "POST", path: "/flowers/image", body: formData }),
+  );
+  const { refetch } = useQuery(
+    ["AIResult"],
+    () =>
+      restFetcher({
+        method: "GET",
+        path: "/flowers/image",
+        params: { task_id: taskId },
+      }),
+    {
+      enabled: false,
+      onSuccess: (data: ResultData[] | ["WAITING"]) => {
+        if (data[0] === "WAITING") setTimeout(refetch, 2000);
+        else {
+          setIsLoading(false);
+          navigate("/result", {
+            state: {
+              data,
+            },
+          });
+        }
+      },
+    },
   );
   const navigate = useNavigate();
   const [files, setFiles] = useState<FileType[]>([]);
@@ -40,13 +66,11 @@ export default function MainPage() {
   const handleUpload = () => {
     const formData = new FormData();
     formData.append("id", files[0]);
+    setIsLoading(true);
     mutate(formData, {
-      onSuccess: (data) =>
-        navigate("/result", {
-          state: {
-            data,
-          },
-        }),
+      onSuccess: (data) => {
+        setTaskId(data.task_id);
+      },
     });
   };
   const { getRootProps, getInputProps, isDragAccept } = useDropzone({
@@ -56,6 +80,9 @@ export default function MainPage() {
     onDrop,
   });
   const isFileUploaded = Boolean(files.length);
+  useEffect(() => {
+    if (taskId !== "") refetch();
+  }, [taskId]);
   return (
     <div className={styles.container}>
       <NavigationBar />
