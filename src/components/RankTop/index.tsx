@@ -27,7 +27,7 @@ export default function RankTop({ index, result, clicked }: RankData) {
       </h1>
       <img className={`${styles.image}`} src={result?.s3_url} />
       <hr className={styles.line} />
-      <div className={`flex flex-row ${styles.labelContainer}`}>
+      <div className={`flex flex-col ${styles.labelContainer}`}>
         <div>{result?.name}</div>
         <div>{clicked ? result?.total_count : result?.count}회</div>
       </div>

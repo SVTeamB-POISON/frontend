@@ -26,6 +26,9 @@ export default function BarChart({
         },
       ]}
       options={{
+        theme: {
+          mode: "light",
+        },
         chart: {
           toolbar: {
             show: false,
@@ -42,6 +45,7 @@ export default function BarChart({
             borderRadius: 4,
             columnWidth: " 50",
             barHeight: "100%",
+            distributed: true,
           },
         },
         dataLabels: {
@@ -93,17 +97,24 @@ export default function BarChart({
             color: "#fff",
           },
         },
-        colors: [
-          "#33b2df",
-          "#546E7A",
-          "#d4526e",
-          "#13d8aa",
-          "#A5978B",
-          "#2b908f",
-        ],
+        fill: {
+          colors: [
+            "#4ecdc4",
+            "#c7f464",
+            "#f9a3a4",
+            "#f46036",
+            "#00b1f2",
+            "#13D8AA",
+          ],
+        },
         stroke: {
           curve: "smooth",
           width: 1,
+        },
+        legend: {
+          labels: {
+            colors: ["#fff"],
+          },
         },
         responsive: [
           {
