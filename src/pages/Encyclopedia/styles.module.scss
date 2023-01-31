@@ -5,6 +5,11 @@
   min-height: calc(100vh - 85px);
   background-color: var(--background-color);
   margin-top: 85px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
 .textContainer {
   width: 100%;

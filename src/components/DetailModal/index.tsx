@@ -40,6 +40,7 @@ function DetailModal(props: DetailModalProps) {
           </div>
         </div>
         <motion.div
+          id="closeButton"
           className={styles.closeButton}
           onClick={close}
           style={{ backgroundColor: detail.poison ? "#f99ee6" : "#8DC36C" }}
