@@ -27,14 +27,14 @@ export default function MainPage() {
   const [taskId, setTaskId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { mutate } = useMutation((formData: FormData) =>
-    restFetcher({ method: "POST", path: "/flowers/image", body: formData }),
+    restFetcher({ method: "POST", path: "/flowers/image/", body: formData }),
   );
   const { refetch } = useQuery(
     ["AIResult"],
     () =>
       restFetcher({
         method: "GET",
-        path: "/flowers/image",
+        path: "/flowers/image/",
         params: { task_id: taskId },
       }),
     {
