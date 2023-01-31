@@ -97,16 +97,16 @@ export default function BarChart({
             color: "#fff",
           },
         },
-        fill: {
-          colors: [
-            "#4ecdc4",
-            "#c7f464",
-            "#f9a3a4",
-            "#f46036",
-            "#00b1f2",
-            "#13D8AA",
-          ],
-        },
+
+        colors: [
+          "#4ecdc4",
+          "#c7f464",
+          "#f9a3a4",
+          "#f46036",
+          "#00b1f2",
+          "#13D8AA",
+        ],
+
         stroke: {
           curve: "smooth",
           width: 1,

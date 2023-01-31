@@ -40,6 +40,10 @@ export default function PieChart({
         dataLabels: {
           enabled: true,
           formatter: function (val, opt) {
+            if (typeof val === "string") {
+              val = parseInt(val);
+            }
+            val = Math.round(val as number);
             return val + "%";
           },
         },
