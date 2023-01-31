@@ -3,7 +3,7 @@
 .container {
   align-items: center;
   justify-items: center;
-  width: 40rem;
+  width: 33rem;
 }
 
 .image {
@@ -16,7 +16,7 @@
 
 .labelContainer {
   display: flex;
-  width: 80%;
+  width: 70%;
   align-items: center;
   justify-content: space-around;
   & > div {
@@ -29,18 +29,14 @@
 
 .poison {
   position: fixed;
-  left: 5.5rem;
-  margin-top: 1.5rem;
+  left: 7rem;
+  margin-top: 2.2rem;
   z-index: 700;
-  width: 3.5rem;
+  width: 3rem;
 }
 
 .line {
   margin-top: 1rem;
   width: 70%;
   height: 10px;
-  @include tablet {
-  }
-  @include desktop {
-  }
 }
