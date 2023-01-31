@@ -83,9 +83,11 @@ export default function EncyclopediaPage() {
     setModalOpen(true);
   };
   const closeModal = (e: React.SyntheticEvent) => {
+    console.log(e.target);
     if (!(e.target instanceof HTMLElement)) return;
     if (
       e.target.id === "overlay" ||
+      e.target.id === "closeButton" ||
       e.target.id === "close" ||
       e.target.id === "closeImg"
     ) {

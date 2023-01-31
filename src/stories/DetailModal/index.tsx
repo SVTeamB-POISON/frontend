@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import icon_x from "@/assets/icon_x.png";
+import icon_x from "../assets/icon_x.png";
 import { DetailData } from "@/types/detail";
 import { motion } from "framer-motion";
 
-type DetailModalProps = {
+export interface DetailModalProps {
   close: (e: React.SyntheticEvent) => void;
   children: React.ReactNode;
   detail: DetailData;
-};
+}
 
 function DetailModal(props: DetailModalProps) {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
@@ -40,7 +40,6 @@ function DetailModal(props: DetailModalProps) {
           </div>
         </div>
         <motion.div
-          id="closeButton"
           className={styles.closeButton}
           onClick={close}
           style={{ backgroundColor: detail.poison ? "#f99ee6" : "#8DC36C" }}

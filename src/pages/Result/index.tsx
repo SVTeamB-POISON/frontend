@@ -60,6 +60,7 @@ export default function ResultPage() {
     if (!(e.target instanceof HTMLElement)) return;
     if (
       e.target.id === "overlay" ||
+      e.target.id === "closeButton" ||
       e.target.id === "close" ||
       e.target.id === "closeImg"
     ) {

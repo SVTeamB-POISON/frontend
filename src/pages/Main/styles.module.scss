@@ -10,6 +10,11 @@
   overflow: hidden;
   margin-top: 2rem;
   background: linear-gradient(180deg, #a8b0d7 0%, #ffffff 100%);
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
 
 .backgroundImg {
