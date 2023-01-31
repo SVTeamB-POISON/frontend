@@ -1,3 +1,5 @@
+@import "@/media.scss";
+
 .container {
   align-items: center;
   justify-items: center;
@@ -35,6 +37,10 @@
 
 .line {
   margin-top: 1rem;
-  width: 80%;
+  width: 70%;
   height: 10px;
+  @include tablet {
+  }
+  @include desktop {
+  }
 }

@@ -31,21 +31,23 @@ export default function PieChart({
             enabled: false,
           },
         },
-
-        // labels: { ranklabel: string[]},
-        labels: ["a", "a", "a", "a", "a"],
         plotOptions: {
           pie: {
             expandOnClick: true,
           },
         },
+        labels: ranklabel,
         dataLabels: {
           enabled: true,
           formatter: function (val, opt) {
             return val + "%";
           },
         },
-
+        legend: {
+          labels: {
+            colors: ["#fff"],
+          },
+        },
         title: {
           text: "검색랭킹",
           align: "center",

@@ -33,23 +33,33 @@
   animation: modal-show 0.3s;
   z-index: 500;
   overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
   & > h1 {
     margin: 1rem;
     color: white;
     font-size: 3rem;
   }
-  overflow-y: scroll;
   @include tablet {
     width: 66rem;
+    overflow-y: hidden;
     height: 46rem;
   }
   @include desktop {
+    overflow-y: hidden;
     width: 66rem;
     height: 46rem;
   }
 }
 .subContainer {
   display: grid;
+  padding-left: 2rem;
   grid-template-columns: repeat(1, 1fr);
   @include tablet {
     grid-template-columns: repeat(2, 1fr);
@@ -83,6 +93,12 @@
   margin-top: 1rem;
   align-items: center;
   justify-content: center;
+  @include tablet {
+    margin-left: 2rem;
+  }
+  @include desktop {
+    margin-left: 2rem;
+  }
 }
 .graphContainer {
   width: 33rem;

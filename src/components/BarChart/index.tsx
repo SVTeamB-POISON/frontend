@@ -57,26 +57,32 @@ export default function BarChart({
               colors: "#fff",
             },
           },
-
-          // title: {
-          //   text: "Flower",
-          //   offsetY: 85,
-          //   offsetX: -20,
-          // },
+          title: {
+            text: "Flower",
+            offsetY: 140,
+            offsetX: -20,
+            style: {
+              color: "#fff",
+            },
+          },
         },
         yaxis: {
           labels: {
             formatter: function (val) {
               return val + "회";
             },
+            style: {
+              colors: "#fff",
+            },
           },
           title: {
             text: "조회수",
             rotate: 0,
-            offsetY: -80,
+            offsetY: -100,
             offsetX: 25,
             style: {
               fontSize: "12",
+              color: "#fff",
             },
           },
         },
@@ -102,7 +108,35 @@ export default function BarChart({
         responsive: [
           {
             breakpoint: 1000,
-            options: {},
+            options: {
+              yaxis: {
+                labels: {
+                  formatter: function (val: string) {
+                    return val + "회";
+                  },
+                  style: {
+                    colors: "#fff",
+                  },
+                },
+                title: {
+                  text: "조회수",
+                  rotate: 0,
+                  offsetY: -80,
+                  offsetX: 25,
+                  style: {
+                    fontSize: "12",
+                    color: "#fff",
+                  },
+                },
+              },
+              Xaxis: {
+                title: {
+                  text: "Flower",
+                  offsetY: 85,
+                  offsetX: -20,
+                },
+              },
+            },
           },
         ],
       }}
