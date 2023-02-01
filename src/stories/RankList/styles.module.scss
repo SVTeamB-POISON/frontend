@@ -1,0 +1,40 @@
+.container {
+  align-items: center;
+  justify-items: center;
+  width: 40rem;
+}
+
+.image {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: black;
+}
+
+.labelContainer {
+  display: flex;
+  width: 80%;
+  align-items: center;
+  justify-content: space-around;
+  & > div {
+    width: 10rem;
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+  }
+}
+
+.poison {
+  position: fixed;
+  left: 5.5rem;
+  margin-top: 1.5rem;
+  z-index: 700;
+  width: 3.5rem;
+}
+
+.line {
+  margin-top: 1rem;
+  width: 80%;
+  height: 10px;
+}
