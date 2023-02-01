@@ -143,8 +143,8 @@ export default function BarChart({
               },
               xaxis: {
                 title: {
-                  text: "Flower",
-                  offsetY: 135,
+                  text: "Flowers",
+                  offsetY: 140,
                   offsetX: -20,
                   style: {
                     fontSize: "12",
