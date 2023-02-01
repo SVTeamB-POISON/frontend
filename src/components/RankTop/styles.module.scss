@@ -1,3 +1,5 @@
+@import "@/media.scss";
+
 .container {
   align-items: center;
   justify-items: center;
@@ -15,15 +17,26 @@
   object-fit: cover;
   background-color: black;
   margin-bottom: 1rem;
+  @include tablet {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+  @include desktop {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
 }
 
 .labelContainer {
   display: fixed;
+  flex-direction: column;
   margin-top: 10%;
+  width: 7rem;
+  justify-content: space-around;
+  gap: 0.1rem;
   & > div {
     font-size: 1.3rem;
     color: white;
-    width: 5rem;
     text-align: center;
   }
 }
@@ -33,18 +46,42 @@
   margin-left: 4rem;
   margin-top: 6rem;
   z-index: 700;
-  width: 4rem;
+  width: 3.5rem;
+  @include tablet {
+    margin-top: 6.6rem;
+  }
+  @include desktop {
+    margin-top: 6.6rem;
+  }
 }
 
 .medal {
   position: fixed;
   margin-right: 4rem;
-  margin-top: 6rem;
-  width: 3rem;
+  margin-top: 7rem;
+  width: 2.5rem;
+
+  @include tablet {
+    width: 2.5rem;
+    margin-top: 6.5rem;
+    margin-right: 3.7rem;
+  }
+  @include desktop {
+    width: 2.5rem;
+    margin-top: 7rem;
+    margin-right: 3.7rem;
+  }
 }
 
 .line {
-  width: 9rem;
+  width: 7rem;
   height: 1px;
   background-color: white;
+
+  @include tablet {
+    width: 7rem;
+  }
+  @include desktop {
+    width: 7rem;
+  }
 }
