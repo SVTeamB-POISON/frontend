@@ -39,11 +39,9 @@ export default function PieChart({
         labels: ranklabel,
         dataLabels: {
           enabled: true,
-          formatter: function (val, opt) {
-            if (typeof val === "string") {
-              val = parseInt(val);
-            }
-            val = Math.round(val as number);
+          formatter: function (val: string) {
+            const value = parseInt(val);
+            val = Math.round(value).toString();
             return val + "%";
           },
         },

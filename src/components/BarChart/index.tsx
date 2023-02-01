@@ -72,7 +72,7 @@ export default function BarChart({
         },
         yaxis: {
           labels: {
-            formatter: function (val) {
+            formatter: function (val: number) {
               return val + "회";
             },
             style: {
