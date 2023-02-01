@@ -14,7 +14,6 @@ export default function PieChart({
   for (let n in ranklabel) {
     dataSet.push({ x: ranklabel[n], y: rankdata[n] });
   }
-  const graphType = chartnumber === 1 ? "bar" : "pie";
   return (
     <ApexCharts
       type="pie"
@@ -31,6 +30,14 @@ export default function PieChart({
             enabled: false,
           },
         },
+        colors: [
+          "#67E09C",
+          "#3E8DF3",
+          "#F3B344",
+          "#EB5564",
+          "#735EC9",
+          "#F2E416",
+        ],
         plotOptions: {
           pie: {
             expandOnClick: true,
@@ -52,7 +59,7 @@ export default function PieChart({
         },
         title: {
           text: "검색랭킹",
-          align: "center",
+          align: "left",
           style: {
             color: "#fff",
           },

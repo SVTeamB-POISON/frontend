@@ -44,7 +44,7 @@
 .poison {
   position: fixed;
   margin-left: 4rem;
-  margin-top: 6rem;
+  margin-top: 7rem;
   z-index: 700;
   width: 3.5rem;
   @include tablet {
@@ -56,7 +56,7 @@
 }
 
 .medal {
-  position: fixed;
+  position: absolute;
   margin-right: 4rem;
   margin-top: 7rem;
   width: 2.5rem;

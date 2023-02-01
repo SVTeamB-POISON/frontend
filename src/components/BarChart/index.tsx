@@ -14,7 +14,6 @@ export default function BarChart({
   for (let n in ranklabel) {
     dataSet.push({ x: ranklabel[n], y: rankdata[n] });
   }
-  const graphType = chartnumber === 1 ? "bar" : "pie";
   return (
     <ApexCharts
       type={"bar"}
@@ -63,7 +62,7 @@ export default function BarChart({
           },
           title: {
             text: "Flower",
-            offsetY: 140,
+            offsetY: 80,
             offsetX: -20,
             style: {
               color: "#fff",
@@ -99,12 +98,12 @@ export default function BarChart({
         },
 
         colors: [
-          "#4ecdc4",
-          "#c7f464",
-          "#f9a3a4",
-          "#f46036",
-          "#00b1f2",
-          "#13D8AA",
+          "#67E09C",
+          "#3E8DF3",
+          "#F3B344",
+          "#EB5564",
+          "#735EC9",
+          "#F2E416",
         ],
 
         stroke: {
@@ -115,6 +114,8 @@ export default function BarChart({
           labels: {
             colors: ["#fff"],
           },
+          offsetY: -5,
+          offsetX: 15,
         },
         responsive: [
           {
@@ -132,7 +133,7 @@ export default function BarChart({
                 title: {
                   text: "조회수",
                   rotate: 0,
-                  offsetY: -80,
+                  offsetY: -50,
                   offsetX: 25,
                   style: {
                     fontSize: "12",
@@ -140,12 +141,21 @@ export default function BarChart({
                   },
                 },
               },
-              Xaxis: {
+              xaxis: {
                 title: {
                   text: "Flower",
-                  offsetY: 85,
+                  offsetY: 135,
                   offsetX: -20,
+                  style: {
+                    fontSize: "12",
+                  },
                 },
+              },
+              legend: {
+                labels: {
+                  colors: ["#fff"],
+                },
+                offsetY: -45,
               },
             },
           },
