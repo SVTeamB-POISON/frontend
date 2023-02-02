@@ -1,3 +1,5 @@
+@import "@/media.scss";
+
 @keyframes modal-show {
   from {
     opacity: 0;
@@ -18,8 +20,8 @@
 }
 
 .container {
-  width: 40rem;
-  height: 44rem;
+  width: 33rem;
+  height: 60rem;
   border-width: 20px;
   border-color: black;
   border-radius: 20px;
@@ -27,31 +29,127 @@
   top: 5.5%;
   padding: 3rem;
   background-color: #5c79cf;
-  padding-top: 4rem;
   align-items: center;
   animation: modal-show 0.3s;
   z-index: 500;
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
   & > h1 {
+    margin: 1rem;
     color: white;
     font-size: 3rem;
   }
+  @include tablet {
+    width: 66rem;
+    overflow-y: hidden;
+    height: 47rem;
+  }
+  @include desktop {
+    overflow-y: hidden;
+    width: 66rem;
+    height: 47rem;
+  }
 }
-.subContainer1 {
-  width: 40rem;
+.subContainer {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include desktop {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.ranksideContainer {
+  width: 33rem;
+}
+.rankContainer1 {
+  width: 33rem;
   align-items: center;
   justify-content: center;
-  gap: 4rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
+  gap: 2rem;
   & > div:nth-child(2) {
     transform: translateY(-3rem);
   }
+  @include tablet {
+    gap: 2rem;
+  }
+  @include desktop {
+    gap: 2rem;
+  }
 }
-.buttonContainer {
+
+.rankContainer2 {
+  width: 33rem;
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: center;
+  @include tablet {
+  }
+  @include desktop {
+  }
+}
+.graphContainer {
+  width: 33rem;
+  height: 44rem;
+  margin-top: 2rem;
+  @include tablet {
+    margin-left: 0;
+    margin-top: 0;
+    height: 20rem;
+  }
+  @include desktop {
+    margin-left: 0;
+    margin-top: 0;
+    height: 20rem;
+  }
+}
+.buttonContainer1 {
   position: absolute;
   left: 4rem;
   top: 2rem;
   gap: 1rem;
 }
+.pieChart {
+  width: 30rem;
+  height: 10rem;
+  margin-top: 15rem;
+  margin-left: 2rem;
+  @include tablet {
+    margin-top: 4rem;
+    width: 28rem;
+    height: 6rem;
+  }
+  @include desktop {
+    margin-top: 5rem;
+    width: 28rem;
+    height: 6rem;
+  }
+}
+.barChart {
+  width: 30rem;
+  height: 10rem;
+
+  @include tablet {
+    margin-bottom: 6rem;
+    width: 28rem;
+    height: 6rem;
+  }
+  @include desktop {
+    margin-bottom: 6rem;
+    width: 28rem;
+    height: 6rem;
+  }
+}
+
 .closeBTN {
   position: absolute;
   top: 2rem;
@@ -75,20 +173,6 @@
   &:first-child {
     margin-right: 1rem;
   }
-}
-
-.crown {
-  position: absolute;
-  width: 7rem;
-  height: 7rem;
-  top: 0rem;
-  justify-items: center;
-}
-
-.subContainer2 {
-  width: 35rem;
-  margin-top: 1rem;
-  align-items: center;
 }
 .item {
   width: 35rem;
