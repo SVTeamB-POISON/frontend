@@ -87,11 +87,11 @@
   }
 }
 .encyBTN {
-  color: #3d8a71;
+  color: #4833ad;
   margin-left: 1rem;
   font-size: 1.4rem;
   &:hover {
-    color: #002c1d;
+    color: var(--button-color);
   }
   @include tablet {
     margin-left: 2rem;
@@ -103,11 +103,11 @@
   }
 }
 .rankBTN {
-  color: #3d8a71;
+  color: #4833ad;
   margin-left: 1rem;
   font-size: 1.4rem;
   &:hover {
-    color: #002c1d;
+    color: var(--button-color);
   }
   @include tablet {
     margin-left: 2rem;
