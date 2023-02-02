@@ -1,0 +1,24 @@
+@keyframes circleFill {
+  0% {
+    stroke-dasharray: 0 calc(2 * 3.14 * 90);
+  }
+}
+.chart {
+  position: relative;
+  width: 4.5rem;
+  height: 4.5rem;
+}
+.aniSvg {
+  position: relative;
+}
+.animatedCircle {
+  animation: circleFill 1s ease;
+}
+.percent {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  color: white;
+}

@@ -1,0 +1,50 @@
+.container {
+  align-items: center;
+  justify-items: center;
+}
+
+.rank {
+  font-size: 2rem;
+  color: white;
+}
+
+.image {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: black;
+  margin-bottom: 1rem;
+}
+
+.labelContainer {
+  display: fixed;
+  margin-top: 10%;
+  & > div {
+    font-size: 1.3rem;
+    color: white;
+    width: 5rem;
+    text-align: center;
+  }
+}
+
+.poison {
+  position: fixed;
+  margin-left: 4rem;
+  margin-top: 6rem;
+  z-index: 700;
+  width: 4rem;
+}
+
+.medal {
+  position: fixed;
+  margin-right: 4rem;
+  margin-top: 6rem;
+  width: 3rem;
+}
+
+.line {
+  width: 9rem;
+  height: 1px;
+  background-color: white;
+}

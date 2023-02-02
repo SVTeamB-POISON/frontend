@@ -1,0 +1,28 @@
+@import "../media.scss";
+
+.container {
+  overflow-x: hidden;
+  transform: translateX(-5%);
+  display: flex;
+  flex-direction: row;
+}
+
+.logo {
+  width: 10rem;
+  height: 10rem;
+  @include tablet {
+  }
+  @include desktop {
+  }
+}
+.textContainer {
+  align-items: center;
+  margin-left: 1rem;
+}
+.name {
+  font-size: 4rem;
+  font-family: "Sunshiney", cursive;
+}
+.subname {
+  font-size: 2rem;
+}
